@@ -41,15 +41,14 @@
         @foreach (var animal in Model)
         {
             <tr>
-                <td>@worker.Name</td>
-                <td>@worker.Position</td>
-                <td>@worker.Department</td>
-                <td>@worker.BirthDay</td>
-                <td>@worker.Status</td>
-                <td>@worker.Salary</td>
-                <td><a href="~/Home/Buy/@worker.Id">Buy</a></td>
-                <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
-                <td><a href="~/Home/DeleteAnimal/@worker.Id">Delete</a></td>
+                <td>@Worker.FirstName + @Worker.FirstName + @Worker.MiddlName + @Worker.LastName</td>
+                <td>@Worker.Position</td>
+                <td>@Worker.Department</td>
+                <td>@Worker.Status</td>
+                <td>@Worker.Salary</td>
+                <td><a href="~/Home/Buy/@Worker.Id">Buy</a></td>
+                <td><a href="~/Home/Update/@Worker.Id">Edit</a></td>
+                <td><a href="~/Home/DeleteAnimal/@Worker.Id">Delete</a></td>
             </tr>
         }
     </table>
