@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diary", "diary\diary.csproj", "{8FF3E9C3-2583-4E8C-918A-3E90089B3748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "diary", "diary\diary.csproj", "{8FF3E9C3-2583-4E8C-918A-3E90089B3748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

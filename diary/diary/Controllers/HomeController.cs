@@ -16,15 +16,13 @@ namespace diary.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
-            //helo
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View(/*db.Animals.ToList()*/);
+            return View(db.Workers.ToList());
         }
-
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -32,34 +30,32 @@ namespace diary.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
-        /*
+        
         [HttpGet]
         public IActionResult AddWorker()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult AddWorker(string _name, string _type, int _price, DateTime _date, int _age, string _gender, string _img)
+        public IActionResult AddWorker(string _FirstName, string _MiddlName, string _LastName, string _Email, int _Position_Id, double _HourlyPayment, string _Status)
         {
-            db.Animals.AddRange(
+            db.Workers.AddRange(
              new Worker
              {
-                 Name = _name,
-                 Type = _type,
-                 Price = _price,
-                 BirthDay = _date,
-                 Age = _age,
-                 Gender = _gender,
-                 Img = _img
+                 FirstName = _FirstName,
+                 MiddlName = _MiddlName,
+                 LastName = _LastName,
+                 Email = _Email,
+                 Position_Id = _Position_Id,
+                 HourlyPayment = _HourlyPayment,
+                 Status = _Status
              });
             db.SaveChanges();
             return View();
         }
         public IActionResult DeleteWorker(int? Id)
         {
-            db.Animals.Remove(db.Animals.Find(Id));
+            db.Workers.Remove(db.Workers.Find(Id));
             db.SaveChanges();
             return Redirect("/Home/Index");
         }
@@ -68,20 +64,20 @@ namespace diary.Controllers
         public IActionResult Update(int? id)
         {
             if (id == null) return RedirectToAction("Index");
-            ViewBag.AnimalId = id;
+            ViewBag.WorkerId = id;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Update(Worker animal)
+        public IActionResult Update(Worker worker)
         {
-            db.Animals.Update(animal);
+            db.Workers.Update(worker);
 
             db.SaveChanges();
 
             return Redirect("/Home/Index");
         }
-        */
+        
     }
 }
 

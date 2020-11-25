@@ -26,33 +26,41 @@
 <table class="table-condensed" border="1" id="tbl">
     <tr id="trTitle">
         <td>Name</td>
+        <td>Email</td>
         <td>Position</td>
-        <td>Department</td>
+        <td>Hourly Payment</td>
         <td>Status</td>
-        <td>Salary</td>
+        <td>Departament</td>
         <!--if (/*admin || moderator == 1*/)-->
         <!--{
-    <td>Edit!</td>
-    <td>Delete!</td>
-        }
-    -->
+        <td>Money</td>
+        <td>Edit!</td>
+        <td>Delete!</td>
+            }
+        -->
 
     </tr>
-        @foreach (var animal in Model)
-        {
-            <tr>
-                <td>@worker.Name</td>
-                <td>@worker.Position</td>
-                <td>@worker.Department</td>
-                <td>@worker.BirthDay</td>
-                <td>@worker.Status</td>
-                <td>@worker.Salary</td>
-                <td><a href="~/Home/Buy/@worker.Id">Buy</a></td>
-                <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
-                <td><a href="~/Home/DeleteAnimal/@worker.Id">Delete</a></td>
-            </tr>
-        }
-    </table>
-    <br />
-    <br />
-    <br />
+    @foreach (var worker in Model)
+    {
+        <tr>
+            <td>@worker.FirstName + @worker.FirstName + @worker.MiddlName + @worker.LastName</td>
+            <td>@worker.Email</td>
+            <td>@worker.Position_Id</td>
+            <td>@worker.HourlyPayment</td>
+            <td>@worker.Status</td>
+            <td>@worker.Departament_Id</td>
+            <!--if (/*admin || moderator == 1*/)-->
+            <!--{
+                        <td>@worker.Money</td>
+                        <td><a href="~/Home/Buy/@worker.Id">Buy</a></td>
+                        <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
+                        <td><a href="~/Home/DeleteAnimal/@worker.Id">Delete</a></td>
+                    
+           }
+           -->
+        </tr>
+     }
+</table>
+<br />
+<br />
+<br />
