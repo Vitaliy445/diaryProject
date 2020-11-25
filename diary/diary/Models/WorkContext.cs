@@ -10,6 +10,8 @@ namespace diary.Models
     {
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Department> Departments { get; set; }
         public DbSet<EventWorkers> Events_Workers { get; set; }
 
         public WorkContext(DbContextOptions<WorkContext> options)
