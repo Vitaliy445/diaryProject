@@ -13,6 +13,7 @@ namespace diary.Models
         public string LastName { set; get; }
         public string Email { set; get; }
         public int Position_Id { set; get; }
+        public int Departament_Id { set; get; }
         public double HourlyPayment { set; get; }
         public string Status { set; get; }
         public double Money { set; get; }
