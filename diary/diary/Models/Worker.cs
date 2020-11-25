@@ -11,7 +11,10 @@ namespace diary.Models
         public string FirstName { set; get; }
         public string MiddlName { set; get; }
         public string LastName { set; get; }
+        public string Email { set; get; }
         public int Position_Id { set; get; }
         public double HourlyPayment { set; get; }
+        public string Status { set; get; }
+        public double Money { set; get; }
     }
 }
