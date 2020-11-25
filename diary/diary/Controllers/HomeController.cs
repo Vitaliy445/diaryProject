@@ -15,6 +15,7 @@ namespace diary.Controllers
 
         public HomeController(ILogger<HomeController> logger)
         {
+            //helo
             _logger = logger;
         }
 
