@@ -1,8 +1,58 @@
-﻿@{
+﻿@model IEnumerable<diary.Models.Worker>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <style>
+        #tbl {
+            width: 100%;
+            border: 5px solid black;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        #trTitle {
+            background: cornflowerblue;
+            border: 5px solid black;
+            color: white;
+        }
+
+        td {
+            font-family: Montserrat;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<h3>Users</h3>
+<table class="table-condensed" border="1" id="tbl">
+    <tr id="trTitle">
+        <td>Name</td>
+        <td>Position</td>
+        <td>Department</td>
+        <td>Status</td>
+        <td>Salary</td>
+        <!--if (/*admin || moderator == 1*/)-->
+        <!--{
+    <td>Edit!</td>
+    <td>Delete!</td>
+        }
+    -->
+
+    </tr>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td>@worker.Name</td>
+                <td>@worker.Position</td>
+                <td>@worker.Department</td>
+                <td>@worker.BirthDay</td>
+                <td>@worker.Status</td>
+                <td>@worker.Salary</td>
+                <td><a href="~/Home/Buy/@worker.Id">Buy</a></td>
+                <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
+                <td><a href="~/Home/DeleteAnimal/@worker.Id">Delete</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
+    <br />
