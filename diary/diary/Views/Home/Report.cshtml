@@ -1,0 +1,47 @@
+﻿@model IEnumerable<diary.Models.Worker>
+@{
+    ViewData["Title"] = "Report";
+}
+
+<h1>Report</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <form method="post">
+        <label>Date 1:</label> <br />
+        <input type="date" name="date1" placeholder="Date 1" /> <br />
+        <br />
+        <label>Date 2:</label> <br />
+        <input type="date" name="date2" placeholder="Date 2" /> <br />
+        <br />
+        <label>User:</label> <br />
+        <select name="id_user" placeholder="Id User">
+            @foreach (var w in Model)
+            {
+                <option value=@w.Id>@w.FirstName @w.LastName</option>
+            }
+        </select>
+        <br />
+        <br />
+        <input type="submit" value="Send" />
+    </form>
+</body>
+</html>
+@if (ViewBag.rez != null)
+{
+    <table class="table-condensed" border="1" id="tbl">
+        <tr id="trTitle">
+            <td>Заработная плата</td>
+            <td>Отработано часов</td>
+        </tr>
+        <tr>
+            <td>@ViewBag.rez</td>
+            <td>@ViewBag.h</td>
+        </tr>
+    </table>
+
+}

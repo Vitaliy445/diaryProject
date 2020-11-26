@@ -20,6 +20,7 @@ namespace diary.Controllers
 
         public IActionResult Index()
         {
+            SendSalary(1);
             return View(db.workers.ToList());
         }
         
@@ -74,7 +75,84 @@ namespace diary.Controllers
             return Redirect("/Home/Index");
         }
         */
-        
+
+
+        public void SendSalary(int id_user)
+        {
+            int month = DateTime.Now.Month - 1;
+            if (month <= 0)
+                month = 12;
+            double salary = 0;
+            Worker worker = new Worker();
+            foreach (var w in db.workers)
+            {
+                if (id_user == w.Id)
+                {
+                    worker = w;
+                    break;
+                }
+            }
+            foreach (var e in db.Events)
+            {
+                if (e.Date.Month == month)
+                {
+                    foreach (var ew in db.Events_Workers)
+                    {
+                        if (e.Id == ew.Id)
+                        {
+                            if (id_user == ew.Worker_Id)
+                            {
+                                salary += ew.Hours * worker.HourlyPayment;
+                            }
+                        }
+                    }
+                }
+            }
+            worker.Money = salary;
+            db.workers.Update(worker);
+            db.SaveChanges();
+        }
+        [HttpGet]
+        public IActionResult Report()
+        {
+            return View(db.workers);
+        }
+        [HttpPost]
+        public IActionResult Report(DateTime date1, DateTime date2, int id_user)
+        {
+            double h = 0;
+            double rez = 0;
+            Worker worker = new Worker();
+            foreach (var w in db.workers)
+            {
+                if (id_user == w.Id)
+                {
+                    worker = w;
+                    break;
+                }
+            }
+            foreach (var e in db.Events)
+            {
+                if (e.Date >= date1 && e.Date <= date2)
+                {
+                    foreach (var ew in db.Events_Workers)
+                    {
+                        if (ew.Event_Id == e.Id && ew.Worker_Id == id_user)
+                        {
+                            h += ew.Hours;
+                            rez += ew.Hours * worker.HourlyPayment; 
+                        }
+                    }
+                }
+            }
+            ViewBag.rez = rez;
+            ViewBag.h = h;
+            return View();
+        }
+        public IActionResult Report2()
+        {
+            return View();
+        }
     }
 }
 
