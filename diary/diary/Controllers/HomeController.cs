@@ -49,26 +49,25 @@ namespace diary.Controllers
             db.SaveChanges();
             return View();
         }
-        /*
+        
         public IActionResult DeleteWorker(int? Id)
         {
-            db.Workers.Remove(db.Workers.Find(Id));
+            db.workers.Remove(db.workers.Find(Id));
             db.SaveChanges();
             return Redirect("/Home/Index");
         }
-
+        
         [HttpGet]
-        public IActionResult Update(int? id)
+        public IActionResult Update(int? Id)
         {
-            if (id == null) return RedirectToAction("Index");
-            ViewBag.WorkerId = id;
+            if (Id == null) return RedirectToAction("Index");
+            ViewBag.WorkerId = Id;
             return View();
         }
-
         [HttpPost]
         public IActionResult Update(Worker worker)
         {
-            db.Workers.Update(worker);
+            db.workers.Update(worker);
 
             db.SaveChanges();
 
