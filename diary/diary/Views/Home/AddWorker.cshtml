@@ -1,0 +1,51 @@
+﻿@model diary.Models.Worker
+
+@{
+    ViewData["Title"] = "AddWorker";
+}
+
+<h1>AddWorker</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <form method="post">
+        <label>First Name:</label> <br />
+        <input type="text" name="_FirstName" placeholder="First Name" /> <br />
+        <br />
+        <label>Middle Name:</label> <br />
+        <input type="text" name="_MiddleName" placeholder="Middle Name" /> <br />
+        <br />
+        <label>Last Name:</label> <br />
+        <input type="text" name="_LastName" placeholder="Last Name" /> <br />
+        <br />
+        <label>Email:</label> <br />
+        <input type="text" name="_Email" placeholder="Email" /> <br />
+        <br />
+        <label for="type">Position id: </label>
+        <input type="number" name="_Position_Id" placeholder="Position id" /><br />
+        <br />
+        <label for="type">Departament id: </label>
+        <input type="number" name="_Departament_id" placeholder="Departament id" /><br />
+        <br />
+        <label for="type">Hourly Payment: </label>
+        <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" /><br />
+        <br />
+        <label>Status:</label> <br />
+        <input type="text" name="_Status" placeholder="Status" /> <br />
+        <br />
+        <input type="submit" value="Send" />
+    </form>
+</body>
+</html>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

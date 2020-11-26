@@ -7,9 +7,9 @@ namespace diary.Models
 {
     public class Event
     {
-        public int Id { set; get; }
-        public string Name { set; get; }
-        public DateTime Date { set; get; }
-        public int Event_Workers_Id { set; get; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
+        public int Event_Workers_Id { get; set; }
     }
 }

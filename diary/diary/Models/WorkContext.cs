@@ -8,7 +8,7 @@ namespace diary.Models
 {
     public class WorkContext : DbContext
     {
-        public DbSet<Worker> Workers { get; set; }
+        public DbSet<Worker> workers { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -16,7 +16,7 @@ namespace diary.Models
 
         public WorkContext(DbContextOptions<WorkContext> options)
             : base(options)
-        {
+        {       
 
             Database.EnsureCreated();
         }
@@ -28,7 +28,7 @@ namespace diary.Models
                 month = 12;
             double salary = 0;
             Worker worker = new Worker();
-            foreach (var w in Workers)
+            foreach (var w in workers)
             {
                 if(id_user == w.Id)
                 {
@@ -56,7 +56,7 @@ namespace diary.Models
 
             worker.Money += salary;
 
-            Workers.Update(worker);
+            workers.Update(worker);
         }
     }
 }

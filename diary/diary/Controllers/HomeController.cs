@@ -12,23 +12,15 @@ namespace diary.Controllers
     public class HomeController : Controller
     {
         WorkContext db;
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(WorkContext context)
         {
-            _logger = logger;
+            db = context;
         }
 
         public IActionResult Index()
         {
-            return View(db.Workers.ToList());
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(db.workers.ToList());
         }
         
         [HttpGet]
@@ -37,22 +29,26 @@ namespace diary.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddWorker(string _FirstName, string _MiddlName, string _LastName, string _Email, int _Position_Id, double _HourlyPayment, string _Status)
+        public IActionResult AddWorker(string _FirstName, string _MiddleName, string _LastName, string _Email, int _Position_Id, int _Departament_id, float _HourlyPayment, string _Status, float _Money)
         {
-            db.Workers.AddRange(
+            _Money = 0;
+            db.workers.AddRange(
              new Worker
              {
                  FirstName = _FirstName,
-                 MiddlName = _MiddlName,
+                 MiddlName = _MiddleName,
                  LastName = _LastName,
                  Email = _Email,
                  Position_Id = _Position_Id,
+                 Departament_Id = _Departament_id,
                  HourlyPayment = _HourlyPayment,
-                 Status = _Status
-             });
+                 Status = _Status,
+                 Money = _Money 
+             }) ;
             db.SaveChanges();
             return View();
         }
+        /*
         public IActionResult DeleteWorker(int? Id)
         {
             db.Workers.Remove(db.Workers.Find(Id));
@@ -77,6 +73,7 @@ namespace diary.Controllers
 
             return Redirect("/Home/Index");
         }
+        */
         
     }
 }
