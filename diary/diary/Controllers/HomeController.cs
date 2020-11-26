@@ -73,8 +73,6 @@ namespace diary.Controllers
 
             return Redirect("/Home/Index");
         }
-        */
-
 
         public void SendSalary(int id_user)
         {
