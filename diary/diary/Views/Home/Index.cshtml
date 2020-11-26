@@ -31,33 +31,32 @@
         <td>Status</td>
         <td>Departament</td>
         <!--if (/*admin || moderator == 1*/)-->
-        <!--{
+        <!--{ -->
         <td>Money</td>
         <td>Edit!</td>
         <td>Delete!</td>
-            }
-        -->
+        <!-- } -->
+
 
     </tr>
     @foreach (var worker in Model)
     {
-        <tr>
-            <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
-            <td>@worker.Email</td>
-            <td>@worker.Position_Id</td>
-            <td>@worker.HourlyPayment</td>
-            <td>@worker.Status</td>
-            <td>@worker.Departament_Id</td>
-            <!--if (/*admin || moderator == 1*/)-->
-            <!--{
-                        <td>worker.Money</td>
-                        <td><a href="~/Home/Buy/worker.Id">Buy</a></td>
-                        <td><a href="~/Home/Update/worker.Id">Edit</a></td>
-                        <td><a href="~/Home/DeleteAnimal/worker.Id">Delete</a></td>
-                    
-           }
-           -->
-        </tr>
+<tr>
+    <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
+    <td>@worker.Email</td>
+    <td>@worker.Position_Id</td>
+    <td>@worker.HourlyPayment</td>
+    <td>@worker.Status</td>
+    <td>@worker.Departament_Id</td>
+    <!--if (/*admin || moderator == 1*/)-->
+    <!--{-->
+    <td>@worker.Money</td>
+    <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
+    <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
+
+    <!--}-->
+
+</tr>
      }
 </table>
 <br />
