@@ -73,6 +73,8 @@ namespace diary.Controllers
 
             return Redirect("/Home/Index");
         }
+        
+
 
         public void SendSalary(int id_user)
         {
@@ -144,7 +146,7 @@ namespace diary.Controllers
             }
             ViewBag.rez = rez;
             ViewBag.h = h;
-            return View();
+            return View(db.workers);
         }
         public IActionResult Report2()
         {
