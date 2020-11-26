@@ -58,5 +58,24 @@ namespace diary.Models
 
             Workers.Update(worker);
         }
+
+        public double Report_Period(DateTime date1, DateTime date2,int id_user)
+        {
+            double rez = 0;
+            foreach(var e in Events)
+            {
+                if(e.Date >= date1&& e.Date<=date2)
+                {
+                    foreach(var ew in Events_Workers)
+                    {
+                        if(ew.Event_Id == e.Id&&ew.Worker_Id== id_user)
+                        {
+                            rez += ew.Hours;
+                        }
+                    }
+                }
+            }
+            return rez;
+        }
     }
 }
