@@ -47,9 +47,25 @@
     <td>@worker.Position_Id</td>
     <td>@worker.HourlyPayment</td>
     <td>@worker.Status</td>
-    <td>@worker.Departament_Id</td>
-    <!--if (/*admin || moderator == 1*/)-->
-    <!--{-->
+    @if (@worker.Departament_Id == 1)
+    {
+        <td>Main Departament</td>
+    }
+    else if (@worker.Departament_Id == 2)
+    {
+        <td>Lutsk Departament</td>
+    }
+    else if (@worker.Departament_Id == 3)
+    {
+        <td>Lviv Departament</td>
+    }
+    else if (@worker.Departament_Id == 4)
+    {
+        <td>Odessa Departament</td>
+    }
+
+    <!--if (/*admin || moderator == 1*/)
+    {-->
     <td>@worker.Money</td>
     <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
     <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
