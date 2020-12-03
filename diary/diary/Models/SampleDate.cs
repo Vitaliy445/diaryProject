@@ -11,7 +11,6 @@ namespace diary.Models
         {
             if (!context.workers.Any())
             {
-               
                 context.SaveChanges();
             }
         }

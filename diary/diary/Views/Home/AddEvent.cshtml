@@ -1,0 +1,29 @@
+﻿@model IEnumerable<diary.Models.Worker>
+
+@{
+    ViewData["Title"] = "AddEvent";
+}
+
+<h1>AddEvent</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <form method="post">
+        <label>Event name:</label> <br />
+        <input type="text" name="name" placeholder="Event name" value="@ViewBag.name" /> <br />
+        <br />
+        <label>Event date:</label> <br />
+        <input type="date" name="date" value="@ViewBag.date" /> <br />
+        <br />
+        <button></button>
+        <input type="submit" value="Send" />
+    </form>
+</body>
+</html>
+<div>
+    @TempData["ButtonValue"]
+</div>

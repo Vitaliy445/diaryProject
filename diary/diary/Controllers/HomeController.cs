@@ -107,7 +107,7 @@ namespace diary.Controllers
                     }
                 }
             }
-            worker.Money = salary;
+            worker.Money += salary;
             db.workers.Update(worker);
             db.SaveChanges();
         }
@@ -148,9 +148,17 @@ namespace diary.Controllers
             ViewBag.h = h;
             return View(db.workers);
         }
-        public IActionResult Report2()
+        [HttpGet]
+        public IActionResult AddEvent()
         {
-            return View();
+            return View(db.workers);
+        }
+        [HttpPost]
+        public IActionResult AddEvent(string name, DateTime date)
+        {
+            ViewBag.name = name;
+            ViewBag.date = date;
+            return View(db.workers);
         }
     }
 }
