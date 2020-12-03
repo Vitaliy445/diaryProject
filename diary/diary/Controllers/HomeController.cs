@@ -151,15 +151,40 @@ namespace diary.Controllers
         [HttpGet]
         public IActionResult AddEvent()
         {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddEvent(Event e)
+        {
+            db.Events.Add(e);
+            db.SaveChanges();
+            int rez = (from s in db.Events
+                       orderby s.Id
+                       select s).LastOrDefault().Id;
+
+            return Redirect($"/Home/AddEventWorkers/{rez}");
+        }
+        [HttpGet]
+        public IActionResult AddEventWorkers(int? id)
+        {
+            ViewBag.id = id;
+            ViewBag.event_workers = db.Events_Workers;
             return View(db.workers);
         }
         [HttpPost]
-        public IActionResult AddEvent(string name, DateTime date)
+        public IActionResult AddEventWorkers(int event_id,int id_user,int hours)
         {
-            ViewBag.name = name;
-            ViewBag.date = date;
-            return View(db.workers);
+            EventWorkers worker = new EventWorkers() { Event_Id = event_id, Worker_Id = id_user, Hours = hours };
+            db.Events_Workers.Add(worker);
+            db.SaveChanges();
+            ViewBag.event_workers = db.Events_Workers;
+
+
+            return Redirect($"/Home/AddEventWorkers/{event_id}");
+        }
+        public IActionResult Events()
+        {
+            return View(db.Events.ToList());
         }
     }
 }
-

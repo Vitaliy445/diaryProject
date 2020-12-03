@@ -1,9 +1,9 @@
-﻿@model IEnumerable<diary.Models.Worker>
-
+﻿@using diary.Models
+@model IEnumerable<diary.Models.Worker>
 @{
     ViewData["Title"] = "Add Event Workers";
 }
-
+@ViewBag.id
 <h1>AddEvent</h1>
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,7 @@
 </head>
 <body>
     <form method="post">
+        <input type="hidden" name="event_id" value="@ViewBag.id" />
         <label></label> <label></label> <br />
         <label>Worker:</label> <br />
         <select name="id_user" placeholder="Id User">
@@ -24,7 +25,6 @@
         <input type="text" name="hours" placeholder="Hours" /> <br />
         <br />
         <br />
-        <button></button>
         <input type="submit" value="Send" />
     </form>
 </body>
@@ -32,3 +32,30 @@
 <div>
     @TempData["ButtonValue"]
 </div>
+
+<table class="table-condensed" border="1" id="tbl">
+    <tr id="trTitle">
+        <td>Name</td>
+        <td>Hours</td>
+
+
+    </tr>
+    @foreach (EventWorkers u in @ViewBag.event_workers)
+    {
+<tr>
+    @if (@u.Event_Id == ViewBag.id)
+    {
+        <td>
+            @{
+                var r = (from s in Model
+                         where s.Id == u.Worker_Id
+                         orderby s.Id
+                         select s).LastOrDefault().GetFullName();
+            @r
+            }
+            </td>
+            <td>@u.Hours</td>
+        }
+</tr>
+    }
+</table>

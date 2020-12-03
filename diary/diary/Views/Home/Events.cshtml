@@ -1,0 +1,44 @@
+﻿@model IEnumerable<diary.Models.Event>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <style>
+        #tbl {
+            width: 100%;
+            border: 5px solid black;
+        }
+
+        #trTitle {
+            background: cornflowerblue;
+            border: 5px solid black;
+            color: white;
+        }
+
+        td {
+            font-family: Montserrat;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<h3>Users</h3>
+<table class="table-condensed" border="1" id="tbl">
+    <tr id="trTitle">
+        <td>id</td>
+        <td>Name</td>
+        <td>date</td>
+        <td> </td>
+
+
+    </tr>
+    @foreach (var e in Model)
+    {
+        <tr>
+            <td>@e.Id</td>
+            <td>@e.Name</td>
+            <td>@e.Date</td>
+            <td><a href="~/Home/AddEventWorkers/@e.Id">Add Workers</a></td>
+
+        </tr>
+    }
+</table>
