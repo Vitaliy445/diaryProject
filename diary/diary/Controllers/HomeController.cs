@@ -62,7 +62,7 @@ namespace diary.Controllers
         {
             if (Id == null) return RedirectToAction("Index");
             ViewBag.WorkerId = Id;
-            return View();
+            return View(db.workers.ToList());
         }
         [HttpPost]
         public IActionResult Update(Worker worker)

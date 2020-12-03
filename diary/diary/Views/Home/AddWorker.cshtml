@@ -1,5 +1,4 @@
-﻿@model diary.Models.Worker
-
+﻿@model IEnumerable<diary.Models.Worker>
 @{
     ViewData["Title"] = "AddWorker";
 }
@@ -33,7 +32,6 @@
         </select>
         <br />
         <select name="_Departament_id">
-
             <option value="1">Main Departament</option>
             <option value="2">Lutsk Departament</option>
             <option value="3">Lviv Departament</option>

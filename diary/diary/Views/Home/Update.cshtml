@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<diary.Models.Worker>
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewData["Title"]</title>
@@ -6,41 +7,50 @@
 </head>
 <body>
     <form method="post">
-        <label>First Name:</label> <br />
-        <input type="text" name="_FirstName" placeholder="First Name" /> <br />
-        <br />
-        <label>Middle Name:</label> <br />
-        <input type="text" name="_MiddleName" placeholder="Middle Name" /> <br />
-        <br />
-        <label>Last Name:</label> <br />
-        <input type="text" name="_LastName" placeholder="Last Name" /> <br />
-        <br />
-        <label>Email:</label> <br />
-        <input type="text" name="_Email" placeholder="Email" /> <br />
-        <br />
-        <select name="_Position_Id">
-
-            <option value="1">Main Admin</option>
-            <option value="2">Assistent Admin</option>
-            <option value="3">Moderator</option>
-            <option value="4">Worker</option>
-        </select>
-        <br />
-        <select name="_Departament_id">
-
-            <option value="1">Main Departament</option>
-            <option value="2">Lutsk Departament</option>
-            <option value="3">Lviv Departament</option>
-            <option value="4">Odessa Departament</option>
-        </select>
-        <br />
-        <label for="type">Hourly Payment: </label>
-        <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" /><br />
-        <br />
-        <label>Status:</label> <br />
-        <input type="text" name="_Status" placeholder="Status" /> <br />
-        <br />
-        <input type="submit" value="Send" />
+        @foreach (var worker in Model)
+        {
+            if (@worker.Id == ViewBag.WorkerId)
+            {
+                <label>First Name:</label> <br />
+                <input type="text" name="FirstName" value="@worker.FirstName" placeholder="First Name" /> <br />
+                <br />
+                <label>Middle Name:</label> <br />
+                <input type="text" name="MiddlName" value="@worker.MiddlName" placeholder="Middle Name" /> <br />
+                <br />
+                <label>Last Name:</label> <br />
+                <input type="text" name="LastName" value="@worker.LastName" placeholder="Last Name" /> <br />
+                <br />
+                <label>Email:</label> <br />
+                <input type="text" name="Email" value="@worker.Email" placeholder="Email" /> <br />
+                <br />
+                <label>Position:</label> <br />
+                <select name="_Position_Id">
+                    <option value="1" selected>Main Admin</option>
+                    <option value="2">Assistent Admin</option>
+                    <option value="3">Moderator</option>
+                    <option value="4">Worker</option>
+                </select>
+                <br />
+                <label>Departament:</label> <br />
+                <select name="Departament_id">
+                    <option value="1" selected>Main Departament</option>
+                    <option value="2">Lutsk Departament</option>
+                    <option value="3">Lviv Departament</option>
+                    <option value="4">Odessa Departament</option>
+                </select>
+                <br />
+                <label for="type">Hourly Payment: </label>
+                <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" /><br />
+                <br />
+                <label>Status:</label> <br />
+                <select name="Status">
+                    <option value="Works" selected>Works</option>
+                    <option value="Relaxed">Relaxed</option>
+                </select>
+                <br />
+                <input type="submit" value="Send" />
+            }
+        }
     </form>
 </body>
 </html>
