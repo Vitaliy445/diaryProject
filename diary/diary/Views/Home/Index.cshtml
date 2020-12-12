@@ -9,8 +9,8 @@
         <style>
             #tblAlig {
                 margin-bottom: 600px;
-
             }
+
             #tbl {
                 width: 100%;
                 border: 1px solid black;
@@ -32,66 +32,72 @@
             }
         </style>
     </head>
-
-        <div class="header-content">
-            <div class="header-content-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 text-center" id="tblAlig">
-                            <h3>Users</h3>
-                            <table class="table-condensed" border="1" id="tbl">
-                                <tr id="trTitle">
-                                    <td>Name</td>
-                                    <td>Email</td>
-                                    <td>Position</td>
-                                    <td>Hourly Payment</td>
-                                    <td>Status</td>
-                                    <td>Departament</td>
-                                    <!--{ -->
-                                    <td>Money</td>
-                                    <td>Edit!</td>
-                                    <td>Delete!</td>
-                                    <!-- } -->
-
-
-    </tr>
-    @foreach (var worker in Model)
-    {
-<tr>
-    <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
-    <td>@worker.Email</td>
-    <td>
-        @foreach (Position position in ViewBag.Positions)
-        {
-            if (position.Id == worker.Position_Id)
-            {
-                @position.Name;
-                break;
-            }
-        }
-    </td>
-    <td>@worker.HourlyPayment</td>
-    <td>@worker.Status</td>
-    <td>
-        @foreach (Department department in ViewBag.Departments)
-        {
-            if (department.Id == worker.Departament_Id)
-            {
-                @department.Name;
-                break;
-            }
-        }
-    </td>
-
-                                        <td>@worker.Money</td>
-                                        <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
-                                        <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
-
-                                        <!--}-->
-
-</tr>
     }
-</table>
-<br />
-<br />
-<br />
+    <div class="header-content">
+        <div class="header-content-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center" id="tblAlig">
+                        <h3>Users</h3>
+                        <table class="table-condensed" border="1" id="tbl">
+                            <tr id="trTitle">
+                                <td>Name</td>
+                                <td>Email</td>
+                                <td>Position</td>
+                                <td>Hourly Payment</td>
+                                <td>Status</td>
+                                <td>Departament</td>
+                                <!--{ -->
+                                <td>Money</td>
+                                <td>Edit!</td>
+                                <td>Delete!</td>
+                                <!-- } -->
+
+
+                            </tr>
+                            @foreach (var worker in Model)
+                            {
+                                <tr>
+                                    <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
+                                    <td>@worker.Email</td>
+                                    <td>
+                                        @foreach (Position position in ViewBag.Positions)
+                                        {
+                                            if (position.Id == worker.Position_Id)
+                                            {
+                                                @position.Name;
+                                                break;
+                                            }
+                                        }
+                                    </td>
+                                    <td>@worker.HourlyPayment</td>
+                                    <td>@worker.Status</td>
+                                    <td>
+                                        @foreach (Department department in ViewBag.Departments)
+                                        {
+                                            if (department.Id == worker.Departament_Id)
+                                            {
+                                                @department.Name;
+                                                break;
+                                            }
+                                        }
+                                    </td>
+
+                                    <td>@worker.Money</td>
+                                    <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
+                                    <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
+
+                                    <!--}-->
+
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+@section Content{ }
