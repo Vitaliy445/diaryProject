@@ -28,17 +28,19 @@
         <td>Name</td>
         <td>date</td>
         <td> </td>
+        <td> </td>
 
 
     </tr>
     @foreach (var e in Model)
     {
-        <tr>
-            <td>@e.Id</td>
-            <td>@e.Name</td>
-            <td>@e.Date</td>
-            <td><a href="~/Home/AddEventWorkers/@e.Id">Add Workers</a></td>
+<tr>
+    <td>@e.Id</td>
+    <td>@e.Name</td>
+    <td>@e.Date</td>
+    <td><a href="~/Home/AddEventWorkers/@e.Id">Add Workers</a></td>
+    <td><a href="~/Home/RemoveEvent/@e.Id">Remove Event</a></td>
 
-        </tr>
+</tr>
     }
 </table>

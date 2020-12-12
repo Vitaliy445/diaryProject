@@ -23,13 +23,14 @@ namespace diary.Controllers
         }
         public IActionResult Index()
         {
-            SendSalary(1);
             return View(db.workers.ToList());
         }
         
         [HttpGet]
         public IActionResult AddWorker()
         {
+            ViewBag.Departments = db.Departments;
+            ViewBag.Positions = db.Positions;
             return View();
         }
         [HttpPost]
@@ -50,7 +51,9 @@ namespace diary.Controllers
                  Money = _Money 
              }) ;
             db.SaveChanges();
-            return View();
+
+
+            return Redirect("/Home/Index");
         }
         
         public IActionResult DeleteWorker(int? Id)
@@ -65,6 +68,8 @@ namespace diary.Controllers
         {
             if (Id == null) return RedirectToAction("Index");
             ViewBag.WorkerId = Id;
+            ViewBag.Departments = db.Departments;
+            ViewBag.Positions = db.Positions;
             return View(db.workers.ToList());
         }
         [HttpPost]
@@ -189,5 +194,31 @@ namespace diary.Controllers
         {
             return View(db.Events.ToList());
         }
+
+        public IActionResult RemoveEvent(int? id)
+        {
+            var _event = db.Events.Find((id));
+            if (_event != null)
+            {
+                db.Events.Remove(_event);
+                db.SaveChanges();
+            }
+            db.SaveChanges();
+            return Redirect($"/Home/Events");
+        }
+        public IActionResult RemoveEventWorker(int? id)
+        {
+            var worker = db.Events_Workers.Find((id));
+            int event_id=0;
+            if (worker != null)
+            {
+                event_id = worker.Event_Id;
+                db.Events_Workers.Remove(worker);
+                db.SaveChanges();
+            }
+            db.SaveChanges();
+            return Redirect($"/Home/AddEventWorkers/{event_id}");
+        }
+        
     }
 }
