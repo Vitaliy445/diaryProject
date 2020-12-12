@@ -186,5 +186,31 @@ namespace diary.Controllers
         {
             return View(db.Events.ToList());
         }
+
+        public IActionResult RemoveEvent(int? id)
+        {
+            var _event = db.Events.Find((id));
+            if (_event != null)
+            {
+                db.Events.Remove(_event);
+                db.SaveChanges();
+            }
+            db.SaveChanges();
+            return Redirect($"/Home/Events");
+        }
+        public IActionResult RemoveEventWorker(int? id)
+        {
+            var worker = db.Events_Workers.Find((id));
+            int event_id=0;
+            if (worker != null)
+            {
+                event_id = worker.Event_Id;
+                db.Events_Workers.Remove(worker);
+                db.SaveChanges();
+            }
+            db.SaveChanges();
+            return Redirect($"/Home/AddEventWorkers/{event_id}");
+        }
+        
     }
 }

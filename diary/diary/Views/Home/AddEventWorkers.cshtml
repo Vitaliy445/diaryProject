@@ -4,7 +4,7 @@
     ViewData["Title"] = "Add Event Workers";
 }
 @ViewBag.id
-<h1>AddEvent</h1>
+<h1>Add Event Workers</h1>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +26,8 @@
         <br />
         <br />
         <input type="submit" value="Send" />
+        <br />
+        <br />
     </form>
 </body>
 </html>
@@ -37,25 +39,25 @@
     <tr id="trTitle">
         <td>Name</td>
         <td>Hours</td>
-
-
+        <td></td>
     </tr>
-    @foreach (EventWorkers u in @ViewBag.event_workers)
+    @foreach (EventWorkers worker in @ViewBag.event_workers)
     {
 <tr>
-    @if (@u.Event_Id == ViewBag.id)
+    @if (@worker.Event_Id == ViewBag.id)
     {
         <td>
             @{
                 var r = (from s in Model
-                         where s.Id == u.Worker_Id
+                         where s.Id == worker.Worker_Id
                          orderby s.Id
                          select s).LastOrDefault().GetFullName();
-            @r
+                @r
             }
-            </td>
-            <td>@u.Hours</td>
-        }
+        </td>
+        <td>@worker.Hours</td>
+        <td><a href="~/Home/RemoveEventWorker/@worker.Id">Remove Worker</a></td>
+    }
 </tr>
     }
 </table>
