@@ -17,7 +17,10 @@ namespace diary.Controllers
         {
             db = context;
         }
-
+        public IActionResult Start()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             ViewBag.Departments = db.Departments;

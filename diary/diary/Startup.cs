@@ -42,7 +42,7 @@ namespace diary
                 endpoints.MapControllerRoute(
                     name: "default",
                     // имя контроллера, имя метода и потом необязательный параметр id
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Start}/{id?}");
             });
         }
     }
