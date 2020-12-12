@@ -24,25 +24,30 @@
         <label>Email:</label> <br />
         <input type="text" name="_Email" placeholder="Email" /> <br />
         <br />
+        <label>Position: </label>
         <select name="_Position_Id">
-            <option value="1">Main Admin</option>
-            <option value="2">Assistent Admin</option>
-            <option value="3">Moderator</option>
-            <option value="4">Worker</option>
+            @foreach (Position position in @ViewBag.Positions)
+            {
+                <option value="@position.Id">@position.Name</option>
+            }
         </select>
         <br />
+        <label>Department: </label>
         <select name="_Departament_id">
-            <option value="1">Main Departament</option>
-            <option value="2">Lutsk Departament</option>
-            <option value="3">Lviv Departament</option>
-            <option value="4">Odessa Departament</option>
+            @foreach (Department department in @ViewBag.Departments)
+            {
+                <option value="@department.Id">@department.Name</option>
+            }
         </select>
         <br />
         <label for="type">Hourly Payment: </label>
-        <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" /><br />
+        <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" />
         <br />
-        <label>Status:</label> <br />
-        <input type="text" name="_Status" placeholder="Status" /> <br />
+        <br />
+        <label>Status:</label>
+        <br />
+        <input type="text" name="_Status" placeholder="Status" />
+        <br />
         <br />
         <input type="submit" value="Send" />
     </form>

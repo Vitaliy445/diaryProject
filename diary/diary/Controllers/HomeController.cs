@@ -20,13 +20,14 @@ namespace diary.Controllers
 
         public IActionResult Index()
         {
-            SendSalary(1);
             return View(db.workers.ToList());
         }
         
         [HttpGet]
         public IActionResult AddWorker()
         {
+            ViewBag.Departments = db.Departments;
+            ViewBag.Positions = db.Positions;
             return View();
         }
         [HttpPost]
@@ -47,7 +48,9 @@ namespace diary.Controllers
                  Money = _Money 
              }) ;
             db.SaveChanges();
-            return View();
+
+
+            return Redirect("/Home/Index");
         }
         
         public IActionResult DeleteWorker(int? Id)
@@ -62,6 +65,8 @@ namespace diary.Controllers
         {
             if (Id == null) return RedirectToAction("Index");
             ViewBag.WorkerId = Id;
+            ViewBag.Departments = db.Departments;
+            ViewBag.Positions = db.Positions;
             return View(db.workers.ToList());
         }
         [HttpPost]

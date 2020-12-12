@@ -7,8 +7,11 @@
 </head>
 <body>
     <form method="post">
-        @foreach (var worker in Model)
-        {
+        @{
+            Worker worker = (from s in Model
+                             where ViewBag.WorkerId == s.Id
+                             select s).LastOrDefault();
+
             if (@worker.Id == ViewBag.WorkerId)
             {
                 <label>First Name:</label> <br />
@@ -23,34 +26,48 @@
                 <label>Email:</label> <br />
                 <input type="text" name="Email" value="@worker.Email" placeholder="Email" /> <br />
                 <br />
-                <label>Position:</label> <br />
-                <select name="Position_Id">
-                    <option value="1" selected>Main Admin</option>
-                    <option value="2">Assistent Admin</option>
-                    <option value="3">Moderator</option>
-                    <option value="4">Worker</option>
+                <label>Position: </label>
+                <select name="_Position_Id">
+                    @foreach (Position position in @ViewBag.Positions)
+                    {
+                        if (@position.Id == @worker.Position_Id)
+                        {
+                            <option selected value="@position.Id">@position.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@position.Id">@position.Name</option>
+                        }
+
+                    }
                 </select>
                 <br />
-                <label>Departament:</label> <br />
-                <select name="Departament_id">
-                    <option value="1" selected>Main Departament</option>
-                    <option value="2">Lutsk Departament</option>
-                    <option value="3">Lviv Departament</option>
-                    <option value="4">Odessa Departament</option>
+                <label>Department: </label>
+                <select name="_Departament_id">
+                    @foreach (Department department in @ViewBag.Departments)
+                    {
+                        if (department.Id == @worker.Departament_Id)
+                        {
+                            <option selected value="@department.Id">@department.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@department.Id">@department.Name</option>
+                        }
+
+                    }
                 </select>
                 <br />
                 <label for="type">Hourly Payment: </label>
                 <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" /><br />
                 <br />
                 <label>Status:</label> <br />
-                <select name="Status">
-                    <option value="Works" selected>Works</option>
-                    <option value="Relaxed">Relaxed</option>
-                </select>
+                <input type="text" name="Status" value="@worker.Status" placeholder="Status" /><br />
                 <br />
                 <input type="submit" value="Send" />
             }
         }
+
     </form>
 </body>
 </html>
