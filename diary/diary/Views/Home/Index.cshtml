@@ -1,80 +1,105 @@
 ﻿@model IEnumerable<diary.Models.Worker>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Master.cshtml";
 }
-<head>
-    <style>
-        #tbl {
-            width: 100%;
-            border: 5px solid black;
-        }
+@section Header
+{
+    <head>
+        <style>
+            #tblAlig {
+                margin-bottom: 600px;
 
-        #trTitle {
-            background: cornflowerblue;
-            border: 5px solid black;
-            color: white;
-        }
+            }
+            #tbl {
+                width: 100%;
+                border: 1px solid black;
+            }
 
-        td {
-            font-family: Montserrat;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<h3>Users</h3>
-<table class="table-condensed" border="1" id="tbl">
-    <tr id="trTitle">
-        <td>Name</td>
-        <td>Email</td>
-        <td>Position</td>
-        <td>Hourly Payment</td>
-        <td>Status</td>
-        <td>Departament</td>
-        <!--if (/*admin || moderator == 1*/)-->
-        <!--{ -->
-        <td>Money</td>
-        <td>Edit!</td>
-        <td>Delete!</td>
-        <!-- } -->
+            #trTitle {
+                background: #F9662B;
+                border: 1px solid black;
+                color: white;
+            }
+
+            td {
+                font-family: Montserrat;
+                font-weight: bold;
+            }
+
+            a {
+                color: white;
+            }
+        </style>
+    </head>
+
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center" id="tblAlig">
+                            <h3>Users</h3>
+                            <table class="table-condensed" border="1" id="tbl">
+                                <tr id="trTitle">
+                                    <td>Name</td>
+                                    <td>Email</td>
+                                    <td>Position</td>
+                                    <td>Hourly Payment</td>
+                                    <td>Status</td>
+                                    <td>Departament</td>
+                                    <!--{ -->
+                                    <td>Money</td>
+                                    <td>Edit!</td>
+                                    <td>Delete!</td>
+                                    <!-- } -->
 
 
-    </tr>
-    @foreach (var worker in Model)
-    {
-<tr>
-    <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
-    <td>@worker.Email</td>
-    <td>@worker.Position_Id</td>
-    <td>@worker.HourlyPayment</td>
-    <td>@worker.Status</td>
-    @if (@worker.Departament_Id == 1)
-    {
-        <td>Main Departament</td>
-    }
-    else if (@worker.Departament_Id == 2)
-    {
-        <td>Lutsk Departament</td>
-    }
-    else if (@worker.Departament_Id == 3)
-    {
-        <td>Lviv Departament</td>
-    }
-    else if (@worker.Departament_Id == 4)
-    {
-        <td>Odessa Departament</td>
-    }
+                                </tr>
+                                @foreach (var worker in Model)
+                                {
+                                    <tr>
+                                        <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
+                                        <td>@worker.Email</td>
+                                        <td>@worker.Position_Id</td>
+                                        <td>@worker.HourlyPayment</td>
+                                        <td>@worker.Status</td>
+                                        @if (@worker.Departament_Id == 1)
+                                        {
+                                            <td>Main Departament</td>
+                                        }
+                                        else if (@worker.Departament_Id == 2)
+                                        {
+                                            <td>Lutsk Departament</td>
+                                        }
+                                        else if (@worker.Departament_Id == 3)
+                                        {
+                                            <td>Lviv Departament</td>
+                                        }
+                                        else if (@worker.Departament_Id == 4)
+                                        {
+                                            <td>Odessa Departament</td>
+                                        }
 
-    <!--if (/*admin || moderator == 1*/)
-    {-->
-    <td>@worker.Money</td>
-    <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
-    <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
+                                        <td>@worker.Money</td>
+                                        <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
+                                        <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
 
-    <!--}-->
+                                        <!--}-->
 
-</tr>
-     }
-</table>
-<br />
-<br />
-<br />
+                                    </tr>
+                                }
+                            </table>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <br />
+    <br />
+}
+@section Content
+{
+
+}
