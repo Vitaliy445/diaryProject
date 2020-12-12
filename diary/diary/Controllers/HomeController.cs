@@ -20,6 +20,8 @@ namespace diary.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Departments = db.Departments;
+            ViewBag.Positions = db.Positions;
             return View(db.workers.ToList());
         }
         
