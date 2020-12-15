@@ -36,7 +36,7 @@ namespace diary.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddWorker(string _FirstName, string _MiddleName, string _LastName, string _Email, int _Position_Id, int _Departament_id, float _HourlyPayment, string _Status, float _Money)
+        public IActionResult AddWorker(string _FirstName, string _MiddleName, string _LastName, string _Email, float _HourlyPayment, string _Status, float _Money, int _Position_Id, int _Departament_id)
         {
             _Money = 0;
             db.workers.AddRange(
@@ -46,11 +46,11 @@ namespace diary.Controllers
                  MiddlName = _MiddleName,
                  LastName = _LastName,
                  Email = _Email,
-                 Position_Id = _Position_Id,
-                 Departament_Id = _Departament_id,
                  HourlyPayment = _HourlyPayment,
                  Status = _Status,
-                 Money = _Money 
+                 Money = _Money,
+                 Position_Id = _Position_Id,
+                 Departament_Id = _Departament_id
              }) ;
             db.SaveChanges();
 

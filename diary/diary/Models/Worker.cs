@@ -12,11 +12,11 @@ namespace diary.Models
         public string MiddlName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int Position_Id { get; set; }
-        public int Departament_Id { get; set; }
         public double HourlyPayment { get; set; }
         public string Status { get; set; }
         public double Money { get; set; }
+        public int Position_Id { get; set; }
+        public int Departament_Id { get; set; }
 
         public string GetFullName()
         {
