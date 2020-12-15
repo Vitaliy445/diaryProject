@@ -1,56 +1,47 @@
 ﻿@model IEnumerable<diary.Models.Worker>
-@{
+    @{
     ViewData["Title"] = "AddWorker";
     Layout = "~/Views/Shared/_Master.cshtml";
-}
+    }
+
     @section Header
     {
-    <body>
-        <div>
-    <form method="post">
-        <label>First Name:</label> 
-        <input type="text" name="_FirstName" placeholder="First Name" /> <br />
-        <br />
-        <label>Middle Name:</label> 
-        <input type="text" name="_MiddleName" placeholder="Middle Name" /> <br />
-        <br />
-        <label>Last Name:</label>
-        <input type="text" name="_LastName" placeholder="Last Name" /> <br />
-        <br />
-        <label>Email:</label> 
-        <input type="text" name="_Email" placeholder="Email" /> <br />
-        <br />
-        <label>Position: </label>
-        <select name="_Position_Id">
-            @foreach (Position position in @ViewBag.Positions)
-            {
-                <option value="@position.Id">@position.Name</option>
-            }
-        </select>
-        <br />
-        <label>Department: </label>
-        <select name="_Departament_id">
-            @foreach (Department department in @ViewBag.Departments)
-            {
-                <option value="@department.Id">@department.Name</option>
-            }
-        </select>
-        <br />
-        <label for="type">Hourly Payment: </label>
-        <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" />
-        <br />
-        <br />
-        <label>Status:</label>
-        <br />
-        <input type="text" name="_Status" placeholder="Status" />
-        <br />
-        <br />
-        <input type="submit" value="Send" />
-    </form>
-            </div>
-</body>
-</html>
-    }
-@section Content {
+        <head>
+            <link href="~/css/Form.css" rel="stylesheet">
 
-}
+        </head>
+        <body>
+            <form class="decor" method="post">
+                <div class="form-left-decoration"></div>
+                <div class="form-right-decoration"></div>
+                <div class="circle"></div>
+                <div class="form-inner">
+                    <h3>Add Worker</h3>
+                    <input type="text" name="_FirstName" placeholder="First Name" /> <br />
+                    <input type="text" name="_MiddleName" placeholder="Middle Name" /> <br />
+                    <input type="text" name="_LastName" placeholder="Last Name" /> <br />
+                    <input type="text" name="_Email" placeholder="Email" /> <br />
+                    <label>Position: </label>
+                    <select name="_Position_Id">
+                        @foreach (Position position in @ViewBag.Positions)
+                        {
+                            <option value="@position.Id">@position.Name</option>
+                        }
+                    </select><br />
+                    <label>Department: </label>
+                    <select name="_Departament_id">
+                        @foreach (Department department in @ViewBag.Departments)
+                        {
+                            <option value="@department.Id">@department.Name</option>
+                        }
+                    </select><br />
+                    <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" /><br />
+                    <input type="text" name="_Status" placeholder="Status" /><br />
+                    <input type="submit" value="Send">
+                </div>
+            </form>
+        </body>
+    }
+    @section Content {
+
+    }
