@@ -3,8 +3,7 @@
     ViewData["Title"] = "AddWorker";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
-
-<body>
+    <body>
     <form method="post">
         <label>First Name:</label> <br />
         <input type="text" name="_FirstName" placeholder="First Name" /> <br />
@@ -48,10 +47,6 @@
 </body>
 </html>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@section Content {
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
