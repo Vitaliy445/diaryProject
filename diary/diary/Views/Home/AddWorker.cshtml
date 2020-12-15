@@ -3,74 +3,49 @@
     ViewData["Title"] = "AddWorker";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
-
-@section Header
-{
-    <head>
-        <link rel="stylesheet" href="~/css/resetForm.css">
-        <link rel="stylesheet" href="~/css/animateForm.css">
-        <link rel="stylesheet" href="~/css/stylesForm.css">
-        <style>
-            .margcont {
-                position: absolute;
-                left: 700px;
-                top: 300px;
+    <body>
+    <form method="post">
+        <label>First Name:</label> <br />
+        <input type="text" name="_FirstName" placeholder="First Name" /> <br />
+        <br />
+        <label>Middle Name:</label> <br />
+        <input type="text" name="_MiddleName" placeholder="Middle Name" /> <br />
+        <br />
+        <label>Last Name:</label> <br />
+        <input type="text" name="_LastName" placeholder="Last Name" /> <br />
+        <br />
+        <label>Email:</label> <br />
+        <input type="text" name="_Email" placeholder="Email" /> <br />
+        <br />
+        <label>Position: </label>
+        <select name="_Position_Id">
+            @foreach (Position position in @ViewBag.Positions)
+            {
+                <option value="@position.Id">@position.Name</option>
             }
-            label {
-                font-family: Montserrat;
-                font-weight: bold;
-                color: white;
+        </select>
+        <br />
+        <label>Department: </label>
+        <select name="_Departament_id">
+            @foreach (Department department in @ViewBag.Departments)
+            {
+                <option value="@department.Id">@department.Name</option>
             }
-        </style>
-    </head>
-    <div class="margcont">
-        <form method="post">
-            <label for="name">First Name:</label> 
-            <input type="name" name="_FirstName"/> <br />
-
-            
-            <label for="name">Middle Name</label>
-            <input type="name" name="_MiddleName" id="name">
-
-            <br />
-            <label>Last Name:</label> 
-            <input type="name" name="_LastName"/> <br />
-            <br />
-            <label>Email:</label> 
-            <input type="name" name="_Email"/> <br />
-            <br />
-            <label>Position: </label>
-            <select name="_Position_Id">
-                @foreach (Position position in @ViewBag.Positions)
-                {
-                    <option value="@position.Id">@position.Name</option>
-                }
-            </select>
-            <br />
-            <label>Department: </label>
-            <select name="_Departament_id">
-                @foreach (Department department in @ViewBag.Departments)
-                {
-                    <option value="@department.Id">@department.Name</option>
-                }
-            </select>
-            <br />
-            <label for="type">Hourly Payment: </label>
-            <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" />
-            <br />
-            <br />
-            <label>Status:</label>
-            <br />
-            <input type="text" name="_Status" placeholder="Status" />
-            <br />
-            <br />
-            <input type="submit" value="Send" />
-        </form>
-    </div>
-
-    <script src="~/js/form.js"></script>
-}
-
+        </select>
+        <br />
+        <label for="type">Hourly Payment: </label>
+        <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" />
+        <br />
+        <br />
+        <label>Status:</label>
+        <br />
+        <input type="text" name="_Status" placeholder="Status" />
+        <br />
+        <br />
+        <input type="submit" value="Send" />
+    </form>
+</body>
+</html>
 
 @section Content {
 
