@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using diary.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace diary.Controllers
 {
@@ -27,7 +28,7 @@ namespace diary.Controllers
             ViewBag.Positions = db.Positions;
             return View(db.workers.ToList());
         }
-        
+
         [HttpGet]
         public IActionResult AddWorker()
         {
