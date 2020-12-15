@@ -17,6 +17,7 @@ namespace diary.Models
         public double HourlyPayment { get; set; }
         public string Status { get; set; }
         public double Money { get; set; }
+        public string Password { get; set; }
 
         public string GetFullName()
         {
