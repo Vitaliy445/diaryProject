@@ -73,10 +73,16 @@
     padding: 50px;
 }
 
+    .form-inner select {
+        width: 50%;
+    }
+    .form-inner option {
+        color: black;
+    }
     .form-inner label {
         color: #C0BFBF;
-        font-family: 'Roboto', sans-serif;
     }
+    
     .form-inner input,
     .form-inner textarea {
         display: block;

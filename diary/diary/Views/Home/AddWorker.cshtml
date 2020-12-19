@@ -21,22 +21,22 @@
                     <input type="text" name="_MiddleName" placeholder="Middle Name" /> <br />
                     <input type="text" name="_LastName" placeholder="Last Name" /> <br />
                     <input type="text" name="_Email" placeholder="Email" /> <br />
+                    <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" /><br />
+                    <input type="text" name="_Status" placeholder="Status" /><br />
                     <label>Position: </label>
                     <select name="_Position_Id">
                         @foreach (Position position in @ViewBag.Positions)
                         {
                             <option value="@position.Id">@position.Name</option>
                         }
-                    </select><br />
+                    </select><br /><br />
                     <label>Department: </label>
                     <select name="_Departament_id">
                         @foreach (Department department in @ViewBag.Departments)
                         {
                             <option value="@department.Id">@department.Name</option>
                         }
-                    </select><br />
-                    <input type="number" name="_HourlyPayment" placeholder="Hourly Payment" /><br />
-                    <input type="text" name="_Status" placeholder="Status" /><br />
+                    </select><br /><br />
                     <input type="submit" value="Send">
                 </div>
             </form>
