@@ -13,6 +13,7 @@ namespace diary.Models
         public DbSet<Position> Positions { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<EventWorkers> Events_Workers { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         public WorkContext(DbContextOptions<WorkContext> options)
             : base(options)

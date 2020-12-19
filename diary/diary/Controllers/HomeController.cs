@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using diary.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace diary.Controllers
 {
@@ -37,26 +41,41 @@ namespace diary.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddWorker(string _FirstName, string _MiddleName, string _LastName, string _Email, float _HourlyPayment, string _Status, float _Money, int _Position_Id, int _Departament_id)
+        public async Task<IActionResult> AddWorker(RegisterModel registerModel)
         {
-            _Money = 0;
-            db.workers.AddRange(
-             new Worker
-             {
-                 FirstName = _FirstName,
-                 MiddlName = _MiddleName,
-                 LastName = _LastName,
-                 Email = _Email,
-                 HourlyPayment = _HourlyPayment,
-                 Status = _Status,
-                 Money = _Money,
-                 Position_Id = _Position_Id,
-                 Departament_Id = _Departament_id
-             }) ;
-            db.SaveChanges();
+            ViewBag.Departments = db.Departments;
+            ViewBag.Positions = db.Positions;
+            if (ModelState.IsValid)
+            {
+                Worker user = await db.workers.FirstOrDefaultAsync(u => u.Email == registerModel.Email);
+                if (user == null)
+                {
+                    // добавляем пользователя в бд
+                    user = new Worker {
+                        FirstName = registerModel.FirstName,
+                        MiddlName = registerModel.MiddlName,
+                        LastName = registerModel.LastName,
+                        Email = registerModel.Email,
+                        Position_Id = registerModel.Position_Id,
+                        Departament_Id = registerModel.Departament_Id,
+                        HourlyPayment = registerModel.HourlyPayment,
+                        Status = registerModel.Status,
+                        Password = registerModel.Password
+                    };
+                    Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "User");
+                    if (userRole != null)
+                        user.Role = userRole;
+
+                    db.workers.Add(user);
+                    await db.SaveChangesAsync();
 
 
-            return Redirect("/Home/Index");
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+            }
+            return View();
         }
         
         public IActionResult DeleteWorker(int? Id)
