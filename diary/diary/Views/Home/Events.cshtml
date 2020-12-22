@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<diary.Models.Event>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "События";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 @section Header
@@ -31,20 +31,21 @@
                 color: white;
             }
         </style>
+        <title>@ViewData["Title"]</title>
     </head>
     <div class="header-content">
         <div class="header-content-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center" id="tblAlig">
-                        <h3>Users</h3>
+                        <h3>События</h3>
                         <table class="table-condensed" border="1" id="tbl">
                             <tr id="trTitle">
                                 <td>Id</td>
-                                <td>Name</td>
-                                <td>Date</td>
-                                <td>Add Workers</td>
-                                <td>Delete Event</td>
+                                <td>Название</td>
+                                <td>Дата</td>
+                                <td>Добавить работников</td>
+                                <td>Удалить Событие</td>
 
 
                             </tr>
@@ -54,8 +55,8 @@
                                     <td>@e.Id</td>
                                     <td>@e.Name</td>
                                     <td>@e.Date</td>
-                                    <td><a href="~/Home/AddEventWorkers/@e.Id">Add Workers</a></td>
-                                    <td><a href="~/Home/RemoveEvent/@e.Id">Remove Event</a></td>
+                                    <td><a href="~/Home/AddEventWorkers/@e.Id">Добавить работника</a></td>
+                                    <td><a href="~/Home/RemoveEvent/@e.Id">Удалить Событие</a></td>
 
                                 </tr>
                             }
@@ -66,6 +67,7 @@
             </div>
 
         </div>
+    </div>
 }
 
 @section Content{ }

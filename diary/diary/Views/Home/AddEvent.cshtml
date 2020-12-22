@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<diary.Models.Worker>
 
 @{
-    ViewData["Title"] = "AddEvent";
+    ViewData["Title"] = "Добавить Событие";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 
@@ -25,8 +25,8 @@
                             <div class="form-right-decoration"></div>
                             <div class="circle"></div>
                             <div class="form-inner">
-                                <h3>Add Event</h3>
-                                <input type="text" name="name" placeholder="Event name" value="@ViewBag.name" /> <br />
+                                <h3>Добавить Событие</h3>
+                                <input type="text" name="name" placeholder="Введите название события" value="@ViewBag.name" />
                                 <input type="date" name="date" value="@ViewBag.date" /> <br />
                                 
                                 <input type="submit" value="Send">

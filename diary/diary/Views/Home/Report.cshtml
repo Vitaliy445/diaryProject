@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<diary.Models.Worker>
 @{
-    ViewData["Title"] = "Report";
+    ViewData["Title"] = "Отчёт";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 @section Header
@@ -23,10 +23,10 @@
                             <div class="form-right-decoration"></div>
                             <div class="circle"></div>
                             <div class="form-inner">
-                                <h3>Add Report</h3>
+                                <h3>Добавить Отчёт</h3>
                                 <input type="date" name="date1" placeholder="date1" /> <br />
                                 <input type="date" name="date2" placeholder="date2" /> <br />
-                                <label>User:</label> <br />
+                                <label>Работник:</label> <br />
                                 <select name="id_user" placeholder="Id User">
                                     @foreach (var w in Model)
                                     {

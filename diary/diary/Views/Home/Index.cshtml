@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<diary.Models.Worker>
 @{
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "Список Работников";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 @section Header
@@ -31,6 +31,7 @@
                 color: white;
             }
         </style>
+        <title>@ViewData["Title"]</title>
     </head>
 
     <div class="header-content">
@@ -38,19 +39,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center" id="tblAlig">
-                        <h3>Users</h3>
+                        <h3>Работники</h3>
                         <table class="table-condensed" border="1" id="tbl">
                             <tr id="trTitle">
-                                <td>Name</td>
-                                <td>Email</td>
-                                <td>Position</td>
-                                <td>Hourly Payment</td>
-                                <td>Status</td>
-                                <td>Departament</td>
+                                <td>ФИО</td>
+                                <td>Електронная пошта</td>
+                                <td>Посада</td>
+                                <td>Почасовая зарплата</td>
+                                <td>Статус</td>
+                                <td>Отдел</td>
                                 <!--{ -->
-                                <td>Money</td>
-                                <td>Edit!</td>
-                                <td>Delete!</td>
+                                <td>Счет</td>
+                                <td>Изменить</td>
+                                <td>Удалить</td>
                                 <!-- } -->
 
 

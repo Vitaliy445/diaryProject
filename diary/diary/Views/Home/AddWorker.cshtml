@@ -1,7 +1,7 @@
 ﻿@model diary.Models.RegisterModel
 
 @{
-    ViewData["Title"] = "AddWorker";
+    ViewData["Title"] = "Добавить Работника";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
 
@@ -9,90 +9,90 @@
     {
     <head>
         <link href="~/css/Form.css" rel="stylesheet">
-
+        <title>@ViewData["Title"]</title>
     </head>
     <body>
-        <form class="decor" method="post" asp-action="AddWorker" asp-anti-forgery="true">
-            <div class="form-left-decoration"></div>
-            <div class="form-right-decoration"></div>
-            <div class="circle"></div>
-            <div class="form-inner">
-                <h3>Add Worker</h3>
-                <div class="validation" asp-validation-summary="ModelOnly"></div>
-                <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="decor">
+            <form method="post" asp-action="AddWorker" asp-anti-forgery="true">
+                <div class="form-left-decoration"></div>
+                <div class="form-right-decoration"></div>
+                <div class="circle"></div>
+                <div class="form-inner">
+                    <h3><b>Добавить Работника</b></h3>
+                    <br />
+                    <div class="validation" asp-validation-summary="ModelOnly"></div>
                     <div>
-                        <label asp-for="FirstName">Введите имя</label><br />
-                        <input asp-for="FirstName" />
-                        <span asp-validation-for="FirstName" />
-                    </div>
-                    <div>
-                        <label asp-for="MiddlName">Введите фамилию</label><br />
-                        <input asp-for="MiddlName" />
-                        <span asp-validation-for="MiddlName" />
-                    </div>
-                    <div>
-                        <label asp-for="LastName">Введите отчество</label><br />
-                        <input asp-for="LastName" />
-                        <span asp-validation-for="LastName" />
-                    </div>
-                    <div>
-                        <label asp-for="Email">Введите Email</label><br />
-                        <input type="text" asp-for="Email" />
-                        <span asp-validation-for="Email" />
-                    </div>
-                    <div>
-                        <label asp-for="Position_Id">Выберите должность</label><br />
-                        <select asp-for="Position_Id">
-                            @foreach (Position position in @ViewBag.Positions)
-                            {
-                                <option value="@position.Id">@position.Name</option>
-                            }
-                        </select>
-                        <span asp-validation-for="Position_Id" />
-                    </div>
-                    <div>
-                        <label asp-for="Departament_Id">Выберите отдел</label><br />
-                        <select asp-for="Departament_Id">
-                            @foreach (Department department in @ViewBag.Departments)
-                            {
-                                <option value="@department.Id">@department.Name</option>
-                            }
-                        </select>
-                        <label asp-for="Position_Id">Выберите должность</label><br />
-                        <select asp-for="Position_Id">
-                            @foreach (Position position in @ViewBag.Positions)
-                            {
-                                <option value="@position.Id">@position.Name</option>
-                            }
-                        </select>
-                        <span asp-validation-for="Departament_Id" />
-                    </div>
-                    <div>
-                        <label asp-for="HourlyPayment">Введите отплату за час</label><br />
-                        <input type="number" asp-for="HourlyPayment" />
-                        <span asp-validation-for="HourlyPayment" />
-                    </div>
-                    <div>
-                        <label asp-for="Status">Введите статус</label><br />
-                        <input type="text" asp-for="Status" />
-                        <span asp-validation-for="Status" />
-                    </div>
-                    <div>
-                        <label asp-for="Password">Введите пароль</label><br />
-                        <input asp-for="Password" />
-                        <span asp-validation-for="Password" />
-                    </div>
-                    <div>
-                        <label asp-for="ConfirmPassword">Повторите пароль</label><br />
-                        <input asp-for="ConfirmPassword" />
-                        <span asp-validation-for="ConfirmPassword" />
-                    </div>
-                    <div>
-                        <input type="submit" value="Регистрация" />
+                        <div>
+                            <label asp-for="FirstName">Введите имя</label><br />
+                            <input asp-for="FirstName" />
+                            <span asp-validation-for="FirstName" />
+                        </div>
+                        <div>
+                            <label asp-for="MiddlName">Введите фамилию</label><br />
+                            <input asp-for="MiddlName" />
+                            <span asp-validation-for="MiddlName" />
+                        </div>
+                        <div>
+                            <label asp-for="LastName">Введите отчество</label><br />
+                            <input asp-for="LastName" />
+                            <span asp-validation-for="LastName" />
+                        </div>
+                        <div>
+                            <label asp-for="Email">Введите Email</label><br />
+                            <input type="text" asp-for="Email" />
+                            <span asp-validation-for="Email" />
+                        </div>
+                        <div>
+                            <label asp-for="Position_Id">Выберите должность</label><br />
+                            <select asp-for="Position_Id">
+                                @foreach (Position position in @ViewBag.Positions)
+                                {
+                                    <option value="@position.Id">@position.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="Position_Id" />
+                        </div>
+                        <div>
+                            <label asp-for="Departament_Id">Выберите отдел</label><br />
+                            <select asp-for="Departament_Id">
+                                @foreach (Department department in @ViewBag.Departments)
+                                {
+                                    <option value="@department.Id">@department.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <label asp-for="HourlyPayment">Введите отплату за час</label><br />
+                            <input type="number" asp-for="HourlyPayment" />
+                            <span asp-validation-for="HourlyPayment" />
+                        </div>
+                        <div>
+                            <label asp-for="Status">Введите статус</label><br />
+                            <input type="text" asp-for="Status" />
+                            <span asp-validation-for="Status" />
+                        </div>
+                        <div>
+                            <label asp-for="Password">Введите пароль</label><br />
+                            <input asp-for="Password" />
+                            <span asp-validation-for="Password" />
+                        </div>
+                        <div>
+                            <label asp-for="ConfirmPassword">Повторите пароль</label><br />
+                            <input asp-for="ConfirmPassword" />
+                            <span asp-validation-for="ConfirmPassword" />
+                        </div>
+                        <div>
+                            <input type="submit" value="Регистрация" />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </body>
 }
 @section Content {
