@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using diary.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace diary
 {
@@ -24,7 +25,13 @@ namespace diary
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             //контекст данных
-            services.AddDbContext<WorkContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<WorkContext>(options => options.UseSqlServer(connection)); 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                 .AddCookie(options =>
+                 {
+                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                     options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                 });
             services.AddControllersWithViews();
         }
 
@@ -33,9 +40,13 @@ namespace diary
         {
             app.UseDeveloperExceptionPage();
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
