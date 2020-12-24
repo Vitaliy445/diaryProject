@@ -1,77 +1,98 @@
 ﻿@model IEnumerable<diary.Models.Worker>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@ViewData["Title"]</title>
-    <meta charset="utf-8">
-</head>
-<body>
-    <form method="post">
-        @{
-            Worker worker = (from s in Model
-                             where ViewBag.WorkerId == s.Id
-                             select s).LastOrDefault();
+@{
+    ViewData["Title"] = "Изменить ";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+@section Header
+    {
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <meta charset="utf-8">
 
-            if (@worker.Id == ViewBag.WorkerId)
-            {
-                <label>First Name:</label> <br />
-                <input type="text" name="FirstName" value="@worker.FirstName" placeholder="First Name" /> <br />
-                <br />
-                <label>Middle Name:</label> <br />
-                <input type="text" name="MiddlName" value="@worker.MiddlName" placeholder="Middle Name" /> <br />
-                <br />
-                <label>Last Name:</label> <br />
-                <input type="text" name="LastName" value="@worker.LastName" placeholder="Last Name" /> <br />
-                <br />
-                <label>Email:</label> <br />
-                <input type="text" name="Email" value="@worker.Email" placeholder="Email" /> <br />
-                <br />
-                <label>Position: </label>
-                <select name="_Position_Id">
-                    @foreach (Position position in @ViewBag.Positions)
-                    {
-                        if (@position.Id == @worker.Position_Id)
-                        {
-                            <option selected value="@position.Id">@position.Name</option>
-                        }
-                        else
-                        {
-                            <option value="@position.Id">@position.Name</option>
-                        }
+        <link href="~/css/Form.css" rel="stylesheet">
+    </head>
+    <body>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="decor">
+            <form method="post">
+                <div class="form-left-decoration"></div>
+                <div class="form-right-decoration"></div>
+                <div class="circle"></div>
+                <div class="form-inner">
+                    <h3><b>Изменить Работника</b></h3>
+                    <br />
+                    @{
+                        Worker worker = (from s in Model
+                                         where ViewBag.WorkerId == s.Id
+                                         select s).LastOrDefault();
 
+                        if (@worker.Id == ViewBag.WorkerId)
+                        {
+                            <div>
+                                <div>
+                                    <label>Введите имя</label><br />
+                                    <input type="text" name="FirstName" value="@worker.FirstName" placeholder="First Name" /> <br />
+                                </div>
+
+                                <div>
+                                    <label>Введите фамилию</label><br />
+                                    <input type="text" name="MiddlName" value="@worker.MiddlName" placeholder="Middle Name" /> <br />
+                                </div>
+                                <div>
+                                    <label v="LastName">Введите отчество</label><br />
+                                    <input type="text" name="LastName" value="@worker.LastName" placeholder="Last Name" /> <br />
+                                </div>
+                                <div>
+                                    <label>Введите Email</label><br />
+                                    <input type="text" name="Email" value="@worker.Email" placeholder="Email" /> <br />
+                                </div>
+                                <div>
+                                    <label name="Position_Id">Выберите должность</label><br />
+                                    <select name="Position_Id">
+                                        @foreach (Position position in @ViewBag.Positions)
+                                        {
+                                            <option value="@position.Id">@position.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <label name="Departament_Id">Выберите отдел</label><br />
+                                    <select name="Departament_Id">
+                                        @foreach (Department department in @ViewBag.Departments)
+                                        {
+                                            <option value="@department.Id">@department.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <label>Введите отплату за час</label><br />
+                                    <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" />
+                                </div>
+                                <div>
+                                    <label>Введите статус</label><br />
+                                    <input type="text" name="Status" value="@worker.Status" placeholder="Status" />
+                                </div>
+                                <div>
+                                    <label name="Password">Введите пароль</label><br />
+                                    <input type="password" name="Password" value="@worker.Password" placeholder="Password" />
+                                </div>
+                                <div>
+                                    <input type="submit" value="Регистрация" />
+                                </div>
+                            </div>
+                        }
                     }
-                </select>
-                <br />
-                <label>Department: </label>
-                <select name="_Departament_id">
-                    @foreach (Department department in @ViewBag.Departments)
-                    {
-                        if (department.Id == @worker.Departament_Id)
-                        {
-                            <option selected value="@department.Id">@department.Name</option>
-                        }
-                        else
-                        {
-                            <option value="@department.Id">@department.Name</option>
-                        }
-
-                    }
-                </select>
-                <br />
-                <label for="type">Hourly Payment: </label>
-                <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" /><br />
-                <br />
-                <label>Status:</label> <br />
-                <input type="text" name="Status" value="@worker.Status" placeholder="Status" /><br />
-                <br />
-                <input type="submit" value="Send" />
-            }
-        }
-
-    </form>
-</body>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+}
+@section Content
+    {}
