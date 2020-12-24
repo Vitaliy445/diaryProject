@@ -18,9 +18,22 @@ namespace diary.Models
         public WorkContext(DbContextOptions<WorkContext> options)
             : base(options)
         {       
-
             Database.EnsureCreated();
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {​​​​
+            string adminRoleName = "admin";
+            string moderatorRoleName = "moderator";
+            string userRoleName = "user";
+
+
+            Role adminRole = new Role {​​​​ Id = 1, Name = adminRoleName }​​​​;
+            Role moderatorRole = new Role { Id = 1, Name = moderatorRoleName }​​​​;
+            Role userRole = new Role { Id = 2, Name = userRoleName }​​​​;
+
+            modelBuilder.Entity<Role>().HasData(new Role[] {​​​​ adminRole, moderatorRole, userRole }​​​​);
+            base.OnModelCreating(modelBuilder);
+        }​​​​
     }
 }

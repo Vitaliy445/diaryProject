@@ -88,6 +88,7 @@ namespace diary.Controllers
             ViewBag.WorkerId = Id;
             ViewBag.Departments = db.Departments;
             ViewBag.Positions = db.Positions;
+            ViewBag.Role = db.Roles;
             return View(db.workers.ToList());
         }
         [HttpPost]

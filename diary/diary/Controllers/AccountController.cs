@@ -57,6 +57,7 @@ namespace diary.Controllers
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
+
     }
 }
 /*

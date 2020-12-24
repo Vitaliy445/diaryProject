@@ -34,58 +34,67 @@
 
                         if (@worker.Id == ViewBag.WorkerId)
                         {
-                            <div>
-                                <div>
-                                    <label>Введите имя</label><br />
-                                    <input type="text" name="FirstName" value="@worker.FirstName" placeholder="First Name" /> <br />
-                                </div>
+                                        <div>
+                                            <div>
+                                                <label>Введите имя</label><br />
+                                                <input type="text" name="FirstName" value="@worker.FirstName" placeholder="First Name" /> <br />
+                                            </div>
 
-                                <div>
-                                    <label>Введите фамилию</label><br />
-                                    <input type="text" name="MiddlName" value="@worker.MiddlName" placeholder="Middle Name" /> <br />
-                                </div>
-                                <div>
-                                    <label v="LastName">Введите отчество</label><br />
-                                    <input type="text" name="LastName" value="@worker.LastName" placeholder="Last Name" /> <br />
-                                </div>
-                                <div>
-                                    <label>Введите Email</label><br />
-                                    <input type="text" name="Email" value="@worker.Email" placeholder="Email" /> <br />
-                                </div>
-                                <div>
-                                    <label name="Position_Id">Выберите должность</label><br />
-                                    <select name="Position_Id">
-                                        @foreach (Position position in @ViewBag.Positions)
-                                        {
-                                            <option value="@position.Id">@position.Name</option>
-                                        }
-                                    </select>
-                                </div>
-                                <div>
-                                    <label name="Departament_Id">Выберите отдел</label><br />
-                                    <select name="Departament_Id">
-                                        @foreach (Department department in @ViewBag.Departments)
-                                        {
-                                            <option value="@department.Id">@department.Name</option>
-                                        }
-                                    </select>
-                                </div>
-                                <div>
-                                    <label>Введите отплату за час</label><br />
-                                    <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" />
-                                </div>
-                                <div>
-                                    <label>Введите статус</label><br />
-                                    <input type="text" name="Status" value="@worker.Status" placeholder="Status" />
-                                </div>
-                                <div>
-                                    <label name="Password">Введите пароль</label><br />
-                                    <input type="password" name="Password" value="@worker.Password" placeholder="Password" />
-                                </div>
-                                <div>
-                                    <input type="submit" value="Регистрация" />
-                                </div>
-                            </div>
+                                            <div>
+                                                <label>Введите фамилию</label><br />
+                                                <input type="text" name="MiddlName" value="@worker.MiddlName" placeholder="Middle Name" /> <br />
+                                            </div>
+                                            <div>
+                                                <label v="LastName">Введите отчество</label><br />
+                                                <input type="text" name="LastName" value="@worker.LastName" placeholder="Last Name" /> <br />
+                                            </div>
+                                            <div>
+                                                <label>Введите Email</label><br />
+                                                <input type="text" name="Email" value="@worker.Email" placeholder="Email" /> <br />
+                                            </div>
+                                            <div>
+                                                <label name="Position_Id">Выберите должность</label><br />
+                                                <select name="Position_Id">
+                                                    @foreach (Position position in @ViewBag.Positions)
+                                                    {
+                                                        <option value="@position.Id">@position.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label>Выберите отдел</label><br />
+                                                <select name="Departament_Id">
+                                                    @foreach (Department department in @ViewBag.Departments)
+                                                    {
+                                                        <option value="@department.Id">@department.Name</option>
+                                                    }
+                                                </select>
+                                            </div><br />
+                                            <div>
+                                                <label>Выберите Роль</label><br />
+                                                <select name="Role">
+                                                    @foreach (Role role in @ViewBag.Role)
+                                                    {
+                                                        <option value="@role.Id">@role.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label>Введите отплату за час</label><br />
+                                                <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" />
+                                            </div>
+                                            <div>
+                                                <label>Введите статус</label><br />
+                                                <input type="text" name="Status" value="@worker.Status" placeholder="Status" />
+                                            </div>
+                                            <div>
+                                                <label name="Password">Введите пароль</label><br />
+                                                <input type="password" name="Password" value="@worker.Password" placeholder="Password" />
+                                            </div>
+                                            <div>
+                                                <input type="submit" value="Регистрация" />
+                                            </div>
+                                        </div>
                         }
                     }
                 </div>
