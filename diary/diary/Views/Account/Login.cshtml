@@ -1,21 +1,45 @@
 ﻿@model diary.Models.LoginModel
+@{
+    ViewData["Title"] = "Логинация";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
 
+@section Header
+    {
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <meta charset="utf-8">
 
-<form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
-    <div class="validation" asp-validation-summary="ModelOnly"></div>
-    <div>
-        <div class="form-group">
-            <label asp-for="Email">Введите Email</label>
-            <input type="text" asp-for="Email" />
-            <span asp-validation-for="Email" />
+        <link href="~/css/Form.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="container">
+                    <div class="row">
+                        <form asp-action="Login" asp-controller="Account" asp-anti-forgery="true" class="decor" method="post">
+                            <div class="form-left-decoration"></div>
+                            <div class="form-right-decoration"></div>
+                            <div class="circle"></div>
+                            <div class="form-inner">
+                                <h3>Логинация</h3>
+                                <input type="text" asp-for="Email" placeholder="Логин" />
+                                <input type="password" asp-for="Password" placeholder="Пароль" /> <br />
+
+                                <input type="submit" value="Ввойти">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Password">Введите пароль</label>
-            <input asp-for="Password" />
-            <span asp-validation-for="Password" />
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Войти" class="btn" />
-        </div>
-    </div>
-</form>
+    </body>
+</html>
+}
+
+@section content
+    {
+}
