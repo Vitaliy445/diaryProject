@@ -49,7 +49,7 @@ namespace diary.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user?.Role.Name)
             };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
@@ -59,3 +59,9 @@ namespace diary.Controllers
         }
     }
 }
+/*
+ * 
+string role =
+                User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value
+                + "|||" + User.FindFirst(x => x.Type == ClaimsIdentity.DefaultNameClaimType).Value;
+ */

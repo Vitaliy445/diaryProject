@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using diary.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace diary.Controllers
 {
@@ -26,6 +27,7 @@ namespace diary.Controllers
             return View(db.workers.ToList());
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult AddWorker()
         {
@@ -33,6 +35,7 @@ namespace diary.Controllers
             ViewBag.Positions = db.Positions;
             return View();
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> AddWorker(RegisterModel registerModel)
         {
