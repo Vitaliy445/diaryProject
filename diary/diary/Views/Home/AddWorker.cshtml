@@ -57,7 +57,7 @@
                             </select>
                             @if (User.IsInRole("admin"))
                             {
-                                <a class="page-scroll" asp-controller="Home" asp-action="AddPositions">Добавить Посаду</a>
+                                <a class="page-scroll" asp-controller="Home" asp-action="AddPosition">Добавить Посаду</a>
                             }
                             <span asp-validation-for="Position_Id" />
                         </div>

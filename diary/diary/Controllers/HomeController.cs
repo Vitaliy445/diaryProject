@@ -251,5 +251,37 @@ namespace diary.Controllers
             return Redirect($"/Home/AddEventWorkers/{event_id}");
         }
 
+
+
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public IActionResult AddPosition()
+        {
+            return View();
+        }
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public IActionResult AddPosition(Position p)
+        {
+            db.Positions.Add(p);
+            db.SaveChanges();
+
+            return Redirect($"/Home/AddWorker");
+        }
+        [Authorize(Roles = "admin")]
+        [HttpGet]
+        public IActionResult AddDepartament()
+        {
+            return View();
+        }
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        public IActionResult AddDepartament(Department d)
+        {
+            db.Departments.Add(d);
+            db.SaveChanges();
+
+            return Redirect($"/Home/AddWorker");
+        }
     }
 }
