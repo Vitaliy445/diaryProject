@@ -65,39 +65,40 @@
                             </tr>
                             @foreach (var worker in Model)
                             {
-                                <tr>
-                                    <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
-                                    <td>@worker.Email</td>
-                                    <td>
-                                        @foreach (Position position in ViewBag.Positions)
-                                        {
-                                            if (position.Id == worker.Position_Id)
-                                            {
-                                                @position.Name;
-                                                break;
-                                            }
-                                        }
-                                    </td>
-                                    <td>@worker.HourlyPayment</td>
-                                    <td>@worker.Status</td>
-                                    <td>
-                                        @foreach (Department department in ViewBag.Departments)
-                                        {
-                                            if (department.Id == worker.Departament_Id)
-                                            {
-                                                @department.Name;
-                                                break;
-                                            }
-                                        }
-                                    </td>
+                        <tr>
+                            <td>@worker.FirstName @worker.MiddlName @worker.LastName</td>
+                            <td>@worker.Email</td>
+                            <td>
+                                @foreach (Position position in ViewBag.Positions)
+                                {
+                                    if (position.Id == worker.Position_Id)
+                                    {
+                                        @position.Name;
+                                        break;
+                                    }
+                                }
+                            </td>
+                            <td>@worker.HourlyPayment</td>
+                            <td>@worker.Status</td>
+                            <td>
+                                @foreach (Department department in ViewBag.Departments)
+                                {
+                                    if (department.Id == worker.Departament_Id)
+                                    {
+                                        @department.Name;
+                                        break;
+                                    }
+                                }
+                            </td>
+                            @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+                            {
+                                <td>@worker.Money</td>
+                                <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
+                                <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
 
-                                    <td>@worker.Money</td>
-                                    <td><a href="~/Home/Update/@worker.Id">Edit</a></td>
-                                    <td><a href="~/Home/DeleteWorker/@worker.Id">Delete</a></td>
-
-                                    <!--  1111}-->
-
-                                </tr>
+                                <!--  1111}-->
+                            }
+                            </tr>
                             }
                         </table>
                     </div>

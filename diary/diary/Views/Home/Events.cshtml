@@ -44,21 +44,26 @@
                                 <td>Id</td>
                                 <td>Название</td>
                                 <td>Дата</td>
-                                <td>Добавить работников</td>
-                                <td>Удалить Событие</td>
-
-
-                            </tr>
-                            @foreach (var e in Model)
-                            {
-                                <tr>
-                                    <td>@e.Id</td>
-                                    <td>@e.Name</td>
-                                    <td>@e.Date</td>
-                                    <td><a href="~/Home/AddEventWorkers/@e.Id">Добавить работника</a></td>
-                                    <td><a href="~/Home/RemoveEvent/@e.Id">Удалить Событие</a></td>
+                                @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+                                {
+                                    <td>Добавить работников</td>
+                                    <td>Удалить Событие</td>
+                                }
 
                                 </tr>
+                            @foreach (var e in Model)
+                            {
+                        <tr>
+                            <td>@e.Id</td>
+                            <td>@e.Name</td>
+                            <td>@e.Date</td>
+                            @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+                            {
+                                <td><a href="~/Home/AddEventWorkers/@e.Id">Добавить работника</a></td>
+                                <td><a href="~/Home/RemoveEvent/@e.Id">Удалить Событие</a></td>
+                            }
+
+                            </tr>
                             }
                         </table>
                     </div>
