@@ -57,7 +57,14 @@
                                                 <select name="Position_Id">
                                                     @foreach (Position position in @ViewBag.Positions)
                                                     {
-                                                        <option value="@position.Id">@position.Name</option>
+                                                        if (worker.Position_Id == position.Id)
+                                                        {
+                                                            <option value="@position.Id" selected>@position.Name</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@position.Id">@position.Name</option>
+                                                        }
                                                     }
                                                 </select>
                                             </div>
@@ -66,7 +73,14 @@
                                                 <select name="Departament_Id">
                                                     @foreach (Department department in @ViewBag.Departments)
                                                     {
-                                                        <option value="@department.Id">@department.Name</option>
+                                                        if (worker.Departament_Id == department.Id)
+                                                        {
+                                                        <option value="@department.Id" selected>@department.Name</option>
+                                                        }
+                                                        else
+                                                        { 
+                                                         <option value="@department.Id">@department.Name</option>
+                                                        }
                                                     }
                                                 </select>
                                             </div><br />
