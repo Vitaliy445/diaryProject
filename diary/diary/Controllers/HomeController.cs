@@ -200,7 +200,7 @@ namespace diary.Controllers
 
             return Redirect($"/Home/AddEventWorkers/{rez}");
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         [HttpGet]
         public IActionResult AddEventWorkers(int? id)
         {
@@ -208,7 +208,7 @@ namespace diary.Controllers
             ViewBag.event_workers = db.Events_Workers;
             return View(db.workers);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         [HttpPost]
         public IActionResult AddEventWorkers(int event_id,int id_user,int hours)
         {
@@ -236,7 +236,7 @@ namespace diary.Controllers
             db.SaveChanges();
             return Redirect($"/Home/Events");
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         public IActionResult RemoveEventWorker(int? id)
         {
             var worker = db.Events_Workers.Find((id));
