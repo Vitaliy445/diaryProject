@@ -61,7 +61,7 @@ namespace diary.Controllers
                         Status = registerModel.Status,
                         Password = registerModel.Password
                     };
-                    Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "User");
+                    Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                     if (userRole != null)
                         user.Role = userRole;
 
@@ -182,13 +182,13 @@ namespace diary.Controllers
             ViewBag.h = h;
             return View(db.workers);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         [HttpGet]
         public IActionResult AddEvent()
         {
             return View();
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         [HttpPost]
         public IActionResult AddEvent(Event e)
         {
