@@ -1,32 +1,49 @@
 ﻿@model diary.Models.Department
 
 @{
-    ViewData["Title"] = "AddDepartament";
+    ViewData["Title"] = "Добавить Отдел";
+    Layout = "~/Views/Shared/_Master.cshtml";
 }
 
-<h1>AddDepartament</h1>
+@section Header
+    {
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <meta charset="utf-8">
 
-<h4>Department</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddDepartament">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+        <link href="~/css/Form.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="container">
+                    <div class="row">
+                        <form class="decor" method="post">
+                            <div class="form-left-decoration"></div>
+                            <div class="form-right-decoration"></div>
+                            <div class="circle"></div>
+                            <div class="form-inner">
+                                <h3>Добавить Отдел</h3>
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
 
+                                <input type="submit" value="Send">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
 <div>
-    <a asp-action="Index">Back to List</a>
+    @TempData["ButtonValue"]
 </div>
+}
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section content
+    {
 }

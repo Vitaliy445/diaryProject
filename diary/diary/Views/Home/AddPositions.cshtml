@@ -1,32 +1,45 @@
 ﻿@model diary.Models.Position
 
 @{
-    ViewData["Title"] = "AddPositions";
+    ViewData["Title"] = "Добавить Посаду";
+    Layout = "~/Views/Shared/_Master.cshtml";
 }
 
-<h1>AddPositions</h1>
+@section Header
+    {
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <meta charset="utf-8">
 
-<h4>Position</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddPositions">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+        <link href="~/css/Form.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="container">
+                    <div class="row">
+                        <form class="decor" method="post">
+                            <div class="form-left-decoration"></div>
+                            <div class="form-right-decoration"></div>
+                            <div class="circle"></div>
+                            <div class="form-inner">
+                                <h3>Добавить Посаду</h3>
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+
+                                <input type="submit" value="Send">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        </div>
+    </body>
+</html>
+}
+@section content
+    {
 }
