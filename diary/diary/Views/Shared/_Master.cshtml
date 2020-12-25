@@ -47,35 +47,34 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" asp-controller="Home" asp-action="Index">Список</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" asp-controller="Home" asp-action="AddWorker">Добавить Работника</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" asp-controller="Home" asp-action="Report">Отчёт</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" asp-controller="Home" asp-action="AddEvent">Добавить Событие</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" asp-controller="Home" asp-action="Events">События</a>
-                    </li>
                     @if (User.IsInRole("admin") || User.IsInRole("moderator") || User.IsInRole("user"))
                     {
-                    <li>
-                        <a class="page-scroll" asp-controller="Account" asp-action="Login">Логин</a>
-                    </li>
+                        <li>
+                            <a class="page-scroll" asp-controller="Home" asp-action="Index">Список</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" asp-controller="Home" asp-action="AddWorker">Добавить Работника</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" asp-controller="Home" asp-action="Report">Отчёт</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" asp-controller="Home" asp-action="AddEvent">Добавить Событие</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" asp-controller="Home" asp-action="Events">События</a>
+                        </li>
                     }
                     else
                     {
-                <li>
-                    
-                </li>
-                    }
 
-                </ul>
+                    }
+                            <li>
+                                <a class="page-scroll" asp-controller="Account" asp-action="Login">Логин</a>
+                            </li>
+
+
+                    </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>

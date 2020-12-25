@@ -21,6 +21,8 @@ namespace diary.Controllers
         {
             return View();
         }
+ 
+        [Authorize(Roles = "admin, moderator, user")]
         public IActionResult Index()
         {
             ViewBag.Departments = db.Departments;
@@ -28,7 +30,7 @@ namespace diary.Controllers
             return View(db.workers.ToList());
         }
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         [HttpGet]
         public IActionResult AddWorker()
         {
@@ -36,7 +38,7 @@ namespace diary.Controllers
             ViewBag.Positions = db.Positions;
             return View();
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, moderator")]
         [HttpPost]
         public async Task<IActionResult> AddWorker(RegisterModel registerModel)
         {
@@ -74,14 +76,15 @@ namespace diary.Controllers
             }
             return View();
         }
-        
+        [Authorize(Roles = "admin, moderator")]
         public IActionResult DeleteWorker(int? Id)
         {
             db.workers.Remove(db.workers.Find(Id));
             db.SaveChanges();
             return Redirect("/Home/Index");
         }
-        
+
+        [Authorize(Roles = "admin, moderator")]
         [HttpGet]
         public IActionResult Update(int? Id)
         {
@@ -92,6 +95,7 @@ namespace diary.Controllers
             ViewBag.Role = db.Roles;
             return View(db.workers.ToList());
         }
+        [Authorize(Roles = "admin, moderator")]
         [HttpPost]
         public IActionResult Update(Worker worker)
         {
@@ -139,11 +143,13 @@ namespace diary.Controllers
             db.workers.Update(worker);
             db.SaveChanges();
         }
+        [Authorize(Roles = "admin, moderator")]
         [HttpGet]
         public IActionResult Report()
         {
             return View(db.workers);
         }
+        [Authorize(Roles = "admin, moderator")]
         [HttpPost]
         public IActionResult Report(DateTime date1, DateTime date2, int id_user)
         {
@@ -176,11 +182,13 @@ namespace diary.Controllers
             ViewBag.h = h;
             return View(db.workers);
         }
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult AddEvent()
         {
             return View();
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult AddEvent(Event e)
         {
@@ -192,6 +200,7 @@ namespace diary.Controllers
 
             return Redirect($"/Home/AddEventWorkers/{rez}");
         }
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult AddEventWorkers(int? id)
         {
@@ -199,6 +208,7 @@ namespace diary.Controllers
             ViewBag.event_workers = db.Events_Workers;
             return View(db.workers);
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult AddEventWorkers(int event_id,int id_user,int hours)
         {
@@ -214,7 +224,7 @@ namespace diary.Controllers
         {
             return View(db.Events.ToList());
         }
-
+        [Authorize(Roles = "admin")]
         public IActionResult RemoveEvent(int? id)
         {
             var _event = db.Events.Find((id));
@@ -226,6 +236,7 @@ namespace diary.Controllers
             db.SaveChanges();
             return Redirect($"/Home/Events");
         }
+        [Authorize(Roles = "admin")]
         public IActionResult RemoveEventWorker(int? id)
         {
             var worker = db.Events_Workers.Find((id));
