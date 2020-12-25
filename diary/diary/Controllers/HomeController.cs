@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using diary.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace diary.Controllers
 {
@@ -238,6 +239,6 @@ namespace diary.Controllers
             db.SaveChanges();
             return Redirect($"/Home/AddEventWorkers/{event_id}");
         }
-        
+
     }
 }

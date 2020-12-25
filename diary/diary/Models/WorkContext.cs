@@ -25,8 +25,6 @@ namespace diary.Models
             string adminRoleName = "admin";
             string moderatorRoleName = "moderator";
             string userRoleName = "user";
-
-            string userRoleName = "user";
             Role adminRole = new Role { Id = 1, Name = adminRoleName };
             Role moderatorRole = new Role { Id = 2, Name = moderatorRoleName };
             Role userRole = new Role { Id = 3, Name = userRoleName };

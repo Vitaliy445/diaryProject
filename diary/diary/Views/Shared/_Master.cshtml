@@ -62,9 +62,19 @@
                     <li>
                         <a class="page-scroll" asp-controller="Home" asp-action="Events">События</a>
                     </li>
+                    @if (User.IsInRole("admin") || User.IsInRole("moderator") || User.IsInRole("user"))
+                    {
                     <li>
                         <a class="page-scroll" asp-controller="Account" asp-action="Login">Логин</a>
                     </li>
+                    }
+                    else
+                    {
+                <li>
+                    
+                </li>
+                    }
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

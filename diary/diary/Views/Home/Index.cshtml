@@ -49,9 +49,16 @@
                                 <td>Статус</td>
                                 <td>Отдел</td>
                                 <!--{ -->
-                                <td>Счет</td>
-                                <td>Изменить</td>
-                                <td>Удалить</td>
+                                @if (User.IsInRole("admin") || User.IsInRole("moderator"))
+                                {
+                                    <td>Счет</td>
+                                    <td>Изменить</td>
+                                    <td>Удалить</td>
+                                }
+                                else
+                                {
+
+                                }
                                 <!-- } -->
 
 
