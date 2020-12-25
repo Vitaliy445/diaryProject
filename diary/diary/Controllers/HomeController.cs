@@ -106,8 +106,6 @@ namespace diary.Controllers
             return Redirect("/Home/Index");
         }
         
-
-
         public void SendSalary(int id_user)
         {
             int month = DateTime.Now.Month - 1;

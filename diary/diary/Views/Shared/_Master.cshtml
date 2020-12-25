@@ -67,7 +67,7 @@
                         </li>
                         <li>
 
-                            <a class="page-scroll"> @User.FindFirst(x => x.Type == ClaimsIdentity.DefaultNameClaimType).Value</a>
+                            <a class="page-scroll" asp-controller="Account" asp-action="Login"> @User.FindFirst(x => x.Type == ClaimsIdentity.DefaultNameClaimType).Value</a>
                         </li>
                 }
                 else
