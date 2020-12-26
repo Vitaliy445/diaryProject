@@ -29,7 +29,7 @@ namespace diary.Models
             Role moderatorRole = new Role { Id = 2, Name = moderatorRoleName };
             Role userRole = new Role { Id = 3, Name = userRoleName };
 
-            modelBuilder.Entity<Role>().HasData(new Role[] { adminRole , moderatorRole, userRole });
+            modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, moderatorRole, userRole });
             base.OnModelCreating(modelBuilder);
         }
     }

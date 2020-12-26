@@ -85,15 +85,6 @@
                                                 </select>
                                             </div><br />
                                             <div>
-                                                <label>Выберите Роль</label><br />
-                                                <select name="Role">
-                                                    @foreach (Role role in @ViewBag.Role)
-                                                    {
-                                                        <option value="@role.Id">@role.Name</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                            <div>
                                                 <label>Введите отплату за час</label><br />
                                                 <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" />
                                             </div>

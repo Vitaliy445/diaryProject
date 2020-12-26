@@ -92,7 +92,7 @@ namespace diary.Controllers
             ViewBag.WorkerId = Id;
             ViewBag.Departments = db.Departments;
             ViewBag.Positions = db.Positions;
-            ViewBag.Role = db.Roles;
+            ViewBag.Roles = db.Roles;
             return View(db.workers.ToList());
         }
         [Authorize(Roles = "admin, moderator")]
