@@ -74,30 +74,30 @@
                                 <a class="page-scroll" asp-controller="Home" asp-action="AddDepartament">Добавить Отдел</a>
                             }
                         </div>
-                        <div>
-                            <label asp-for="HourlyPayment">Введите отплату за час</label><br />
-                            <input type="number" asp-for="HourlyPayment" />
-                            <span asp-validation-for="HourlyPayment" />
+                                <div>
+                                    <label asp-for="HourlyPayment">Введите отплату за час</label><br />
+                                    <input type="number" asp-for="HourlyPayment" />
+                                    <span asp-validation-for="HourlyPayment" />
+                                </div>
+                                <div>
+                                    <label asp-for="Status">Введите статус</label><br />
+                                    <input type="text" asp-for="Status" />
+                                    <span asp-validation-for="Status" />
+                                </div>
+                                <div>
+                                    <label asp-for="Password">Введите пароль</label><br />
+                                    <input asp-for="Password" />
+                                    <span asp-validation-for="Password" />
+                                </div>
+                                <div>
+                                    <label asp-for="ConfirmPassword">Повторите пароль</label><br />
+                                    <input asp-for="ConfirmPassword" />
+                                    <span asp-validation-for="ConfirmPassword" />
+                                </div>
+                                <div>
+                                    <input type="submit" value="Регистрация" />
+                                </div>
                         </div>
-                        <div>
-                            <label asp-for="Status">Введите статус</label><br />
-                            <input type="text" asp-for="Status" />
-                            <span asp-validation-for="Status" />
-                        </div>
-                        <div>
-                            <label asp-for="Password">Введите пароль</label><br />
-                            <input asp-for="Password" />
-                            <span asp-validation-for="Password" />
-                        </div>
-                        <div>
-                            <label asp-for="ConfirmPassword">Повторите пароль</label><br />
-                            <input asp-for="ConfirmPassword" />
-                            <span asp-validation-for="ConfirmPassword" />
-                        </div>
-                        <div>
-                            <input type="submit" value="Регистрация" />
-                        </div>
-                    </div>
                 </div>
             </form>
         </div>

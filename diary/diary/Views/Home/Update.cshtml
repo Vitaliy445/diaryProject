@@ -75,15 +75,27 @@
                                                     {
                                                         if (worker.Departament_Id == department.Id)
                                                         {
-                                                        <option value="@department.Id" selected>@department.Name</option>
+                                                            <option value="@department.Id" selected>@department.Name</option>
                                                         }
                                                         else
-                                                        { 
-                                                         <option value="@department.Id">@department.Name</option>
+                                                        {
+                                                            <option value="@department.Id">@department.Name</option>
                                                         }
                                                     }
                                                 </select>
                                             </div><br />
+                                            @if (User.IsInRole("admin"))
+                                            {
+                                                <div>
+                                                    <label>Выберите Роль</label><br />
+                                                    <select name="Role">
+                                                        @foreach (Role role in @ViewBag.Role)
+                                                        {
+                                                            <option value="@role.Id">@role.Name</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            }
                                             <div>
                                                 <label>Введите отплату за час</label><br />
                                                 <input type="number" name="HourlyPayment" value="@worker.HourlyPayment" placeholder="Hourly Payment" />

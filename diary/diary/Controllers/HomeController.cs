@@ -25,7 +25,6 @@ namespace diary.Controllers
         [Authorize(Roles = "admin, moderator, user")]
         public IActionResult Index()
         {
-            SendSalary(1);
             ViewBag.Departments = db.Departments;
             ViewBag.Positions = db.Positions;
             return View(db.workers.ToList());
@@ -35,6 +34,7 @@ namespace diary.Controllers
         [HttpGet]
         public IActionResult AddWorker()
         {
+            ViewBag.Role = db.Roles;
             ViewBag.Departments = db.Departments;
             ViewBag.Positions = db.Positions;
             return View();
@@ -45,6 +45,7 @@ namespace diary.Controllers
         {
             ViewBag.Departments = db.Departments;
             ViewBag.Positions = db.Positions;
+            ViewBag.Role = db.Roles;
             if (ModelState.IsValid)
             {
                 Worker user = await db.workers.FirstOrDefaultAsync(u => u.Email == registerModel.Email);
@@ -93,7 +94,7 @@ namespace diary.Controllers
             ViewBag.WorkerId = Id;
             ViewBag.Departments = db.Departments;
             ViewBag.Positions = db.Positions;
-            ViewBag.Roles = db.Roles;
+            ViewBag.Role = db.Roles;
             return View(db.workers.ToList());
         }
         [Authorize(Roles = "admin, moderator")]
@@ -214,6 +215,7 @@ namespace diary.Controllers
             EventWorkers worker = new EventWorkers() { Event_Id = event_id, Worker_Id = id_user, Hours = hours };
             db.Events_Workers.Add(worker);
             db.SaveChanges();
+            SendSalary(id_user);
             ViewBag.event_workers = db.Events_Workers;
 
 
