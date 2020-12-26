@@ -48,11 +48,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    @if (User.IsInRole("admin") || User.IsInRole("moderator") || User.IsInRole("user"))
+                    @if (User.IsInRole("admin") || User.IsInRole("moderator"))
                     {
                         <li>
                             <a class="page-scroll" asp-controller="Home" asp-action="Index">Список</a>
                         </li>
+
                         <li>
                             <a class="page-scroll" asp-controller="Home" asp-action="AddWorker">Добавить Работника</a>
                         </li>
@@ -66,16 +67,27 @@
                             <a class="page-scroll" asp-controller="Home" asp-action="Events">События</a>
                         </li>
                         <li>
-
                             <a class="page-scroll" asp-controller="Account" asp-action="Login"> @User.FindFirst(x => x.Type == ClaimsIdentity.DefaultNameClaimType).Value</a>
                         </li>
-                }
-                else
-                {
-                    <li>
-                        <a class="page-scroll" asp-controller="Account" asp-action="Login">Логин</a>
-                    </li>
-                }
+                    }
+                    else if (User.IsInRole("user"))
+                    {
+                        <li>
+                            <a class="page-scroll" asp-controller="Home" asp-action="Index">Список</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" asp-controller="Home" asp-action="Events">События</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" asp-controller="Account" asp-action="Login"> @User.FindFirst(x => x.Type == ClaimsIdentity.DefaultNameClaimType).Value</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a class="page-scroll" asp-controller="Account" asp-action="Login">Логин</a>
+                        </li>
+                    }
 
                 </ul>
             </div>

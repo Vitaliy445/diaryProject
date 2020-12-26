@@ -29,6 +29,10 @@
                                 <input type="password" asp-for="Password" placeholder="Пароль" /> <br />
 
                                 <input type="submit" value="Ввойти">
+                                @if (ViewBag.Message != null)
+                                { 
+                                    <label style="color: red; font-size: 11px;">Неверный логин или пароль</label>
+                                }
                             </div>
                         </form>
 
