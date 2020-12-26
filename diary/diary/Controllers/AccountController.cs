@@ -35,9 +35,13 @@ namespace diary.Controllers
                     .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
-                    await Authenticate(user); 
+                    await Authenticate(user);
 
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Message = "Некорректные логин и(или) пароль";
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }

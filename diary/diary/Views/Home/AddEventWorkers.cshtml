@@ -1,63 +1,80 @@
 ﻿@using diary.Models
 @model IEnumerable<diary.Models.Worker>
 @{
-    ViewData["Title"] = "Add Event Workers";
+    ViewData["Title"] = "Добавить Работников для события";
+    Layout = "~/Views/Shared/_Master.cshtml";
 }
-@ViewBag.id
-<h1>Add Event Workers</h1>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@ViewData["Title"]</title>
-    <meta charset="utf-8">
-</head>
-<body>
-    <form method="post">
-        <input type="hidden" name="event_id" value="@ViewBag.id" />
-        <label></label> <label></label> <br />
-        <label>Worker:</label> <br />
-        <select name="id_user" placeholder="Id User">
-            @foreach (var w in Model)
-            {
-                <option value=@w.Id>@w.FirstName @w.LastName</option>
-            }
-        </select>
-        <input type="text" name="hours" placeholder="Hours" /> <br />
-        <br />
-        <br />
-        <input type="submit" value="Send" />
-        <br />
-        <br />
-    </form>
-</body>
-</html>
-<div>
-    @TempData["ButtonValue"]
-</div>
+@section Header
+    {
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <meta charset="utf-8">
 
-<table class="table-condensed" border="1" id="tbl">
-    <tr id="trTitle">
-        <td>Name</td>
-        <td>Hours</td>
-        <td></td>
-    </tr>
-    @foreach (EventWorkers worker in @ViewBag.event_workers)
+        <link href="~/css/Form.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="container">
+                    <div class="row">
+                        <form class="decor" method="post">
+                            <div class="form-left-decoration"></div>
+                            <div class="form-right-decoration"></div>
+                            <div class="circle"></div>
+                            <div class="form-inner">
+                                <h3>Добавить Работников для события</h3>
+                                <label>Работник:</label> <br />
+                                <select name="id_user" placeholder="Id User">
+                                    @foreach (var w in Model)
+                                    {
+                                        <option value=@w.Id>@w.FirstName @w.LastName</option>
+                                    }
+                                </select>
+                                <br /><br />
+
+                                <label>Время:</label> <br />
+                                <input type="text" name="hours" />
+                                <input type="submit" value="Send">
+                                <table class="table-condensed" border="1" id="tbl">
+                                    <tr id="trTitle">
+                                        <td>Name</td>
+                                        <td>Hours</td>
+                                        <td></td>
+                                    </tr>
+                                    @foreach (EventWorkers worker in @ViewBag.event_workers)
+                                    {
+                                        <tr>
+                                            @if (@worker.Event_Id == ViewBag.id)
+                                            {
+                                                <td>
+                                                    @{
+                                                        var r = (from s in Model
+                                                                 where s.Id == worker.Worker_Id
+                                                                 orderby s.Id
+                                                                 select s).LastOrDefault().GetFullName();
+                                                        @r
+                                                    }
+                                                </td>
+                                                <td>@worker.Hours</td>
+                                                <td><a href="~/Home/RemoveEventWorker/@worker.Id">Remove Worker</a></td>
+                                            }
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+}
+
+@section content
     {
-<tr>
-    @if (@worker.Event_Id == ViewBag.id)
-    {
-        <td>
-            @{
-                var r = (from s in Model
-                         where s.Id == worker.Worker_Id
-                         orderby s.Id
-                         select s).LastOrDefault().GetFullName();
-                @r
-            }
-        </td>
-        <td>@worker.Hours</td>
-        <td><a href="~/Home/RemoveEventWorker/@worker.Id">Remove Worker</a></td>
-    }
-</tr>
-    }
-</table>
+
+}
