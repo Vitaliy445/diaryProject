@@ -9,6 +9,7 @@
     <!DOCTYPE html>
     <html>
     <head>
+        @ViewBag.id
         <title>@ViewData["Title"]</title>
         <meta charset="utf-8">
 
@@ -34,6 +35,7 @@
                                 </select>
                                 <br /><br />
 
+                                <input type="hidden" name="event_id" value="@ViewBag.id" />
                                 <label>Время:</label> <br />
                                 <input type="text" name="hours" />
                                 <input type="submit" value="Send">

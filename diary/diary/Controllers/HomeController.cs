@@ -25,6 +25,7 @@ namespace diary.Controllers
         [Authorize(Roles = "admin, moderator, user")]
         public IActionResult Index()
         {
+            SendSalary(1);
             ViewBag.Departments = db.Departments;
             ViewBag.Positions = db.Positions;
             return View(db.workers.ToList());
